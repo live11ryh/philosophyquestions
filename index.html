@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>哲学文档 HTML 目录</title>
+  <meta name="description" content="哲学与物理学文档的 HTML 阅读目录。">
+  <style>
+    :root {
+      --sky: #e8f5ff;
+      --mint: #e8f8ef;
+      --foam: #f7fcfb;
+      --ink: #10212a;
+      --muted: #587174;
+      --deep: #155b64;
+      --green: #32856a;
+      --line: rgba(16, 33, 42, 0.14);
+      --panel: rgba(255, 255, 255, 0.68);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,0.82), transparent 28%),
+        linear-gradient(135deg, var(--sky) 0%, var(--foam) 48%, var(--mint) 100%);
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      line-height: 1.75;
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: clamp(34px, 7vw, 82px) 0 56px;
+    }
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.46fr);
+      gap: clamp(24px, 5vw, 64px);
+      align-items: end;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 16px;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 6.2rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+    .intro {
+      max-width: 720px;
+      margin: 24px 0 0;
+      color: var(--deep);
+      font-size: clamp(1.04rem, 1.7vw, 1.24rem);
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      font-family: "Inter", "Segoe UI", sans-serif;
+    }
+    .stat {
+      min-height: 108px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    main {
+      padding-top: 34px;
+    }
+    .section-title {
+      margin: 0 0 18px;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 0.84rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 178px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      text-decoration: none;
+      box-shadow: 0 18px 48px rgba(21, 91, 100, 0.08);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(21, 91, 100, 0.34);
+      background: rgba(255, 255, 255, 0.82);
+    }
+    .card .number {
+      font-family: "Inter", "Segoe UI", sans-serif;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: clamp(1.28rem, 2vw, 1.68rem);
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+    .card p {
+      margin: auto 0 0;
+      padding-top: 18px;
+      color: var(--muted);
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+    }
+    footer {
+      margin-top: 36px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 820px) {
+      header, .grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 28px, 1120px); }
+      .stats { grid-template-columns: 1fr; }
+      .card { min-height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">Philosophy HTML Archive</p>
+        <h1>哲学文档目录</h1>
+        <p class="intro">这里汇总了本文件夹中由 Word 转换而来的 HTML 长文。适合直接发布到 GitHub Pages，用作阅读、分享和归档入口。</p>
+      </div>
+      <div class="stats" aria-label="站点统计">
+        <div class="stat"><strong>8</strong><span>篇 HTML 长文</span></div>
+        <div class="stat"><strong>4</strong><span>位哲学家肖像</span></div>
+      </div>
+    </header>
+
+    <main>
+      <p class="section-title">文章列表</p>
+      <section class="grid" aria-label="文章列表">
+        <a class="card" href="physics-unites.html">
+          <span class="number">01</span>
+          <h2>物理学史上的大统一</h2>
+          <p>从牛顿、麦克斯韦到量子引力的统一线索。</p>
+        </a>
+        <a class="card" href="为什么在贝克莱那里-上帝的感知-是世界存在的基础-而不是人都感知呢.html">
+          <span class="number">02</span>
+          <h2>为什么在贝克莱那里，上帝的感知，是世界存在的基础，而不是人都感知呢？</h2>
+          <p>贝克莱、感知、世界持续性与上帝的哲学位置。</p>
+        </a>
+        <a class="card" href="亨利对胡塞尔身体现象学的批判.html">
+          <span class="number">03</span>
+          <h2>亨利对胡塞尔身体现象学的批判</h2>
+          <p>生命现象学对意向性和身体问题的推进。</p>
+        </a>
+        <a class="card" href="什么是柏拉图式的恋爱.html">
+          <span class="number">04</span>
+          <h2>什么是柏拉图式的恋爱？</h2>
+          <p>从爱欲、身体之美到美本身的哲学升华。</p>
+        </a>
+        <a class="card" href="德国古典哲学的逻辑进程.html">
+          <span class="number">05</span>
+          <h2>德国古典哲学的逻辑进程</h2>
+          <p>康德、费希特、谢林、黑格尔的问题关联。</p>
+        </a>
+        <a class="card" href="柏拉图会饮篇的逻辑结构.html">
+          <span class="number">06</span>
+          <h2>柏拉图《会饮篇》的逻辑结构</h2>
+          <p>按问题推进阅读《会饮篇》的爱欲论证。</p>
+        </a>
+        <a class="card" href="现象学发展线索分析.html">
+          <span class="number">07</span>
+          <h2>现象学发展线索分析</h2>
+          <p>从胡塞尔到德里达的现象学问题变形。</p>
+        </a>
+        <a class="card" href="胡塞尔逻辑研究第一卷的逻辑结构.html">
+          <span class="number">08</span>
+          <h2>胡塞尔《逻辑研究》第一卷的逻辑结构</h2>
+          <p>意义、对象、意向性与明证的问题链。</p>
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      GitHub Pages 发布后，仓库主页会自动打开本目录页。
+    </footer>
+  </div>
+</body>
+</html>
