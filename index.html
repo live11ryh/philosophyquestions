@@ -1,11 +1,10 @@
-
 <!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>鍝插鏂囨。 HTML 鐩綍</title>
-  <meta name="description" content="鍝插涓庣墿鐞嗗鏂囨。鐨?HTML 闃呰鐩綍銆?>
+  <title>哲学文档 HTML 目录</title>
+  <meta name="description" content="哲学、逻辑与思想史文档的 HTML 阅读目录。">
   <style>
     :root {
       --sky: #e8f5ff;
@@ -56,7 +55,6 @@
       margin: 0;
       font-size: clamp(2.5rem, 7vw, 6.2rem);
       line-height: 1.02;
-      letter-spacing: 0;
     }
     .intro {
       max-width: 720px;
@@ -88,9 +86,35 @@
       color: var(--muted);
       font-size: 0.9rem;
     }
-    main {
-      padding-top: 34px;
+    .image-strip {
+      margin: 30px 0 0;
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      gap: 12px;
     }
+    .image-strip figure {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .image-strip img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 170px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .image-strip figcaption {
+      padding: 10px 12px 12px;
+      color: var(--muted);
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+    main { padding-top: 34px; }
     .section-title {
       margin: 0 0 18px;
       font-family: "Inter", "Segoe UI", sans-serif;
@@ -132,7 +156,6 @@
       margin: 0;
       font-size: clamp(1.28rem, 2vw, 1.68rem);
       line-height: 1.32;
-      letter-spacing: 0;
     }
     .card p {
       margin: auto 0 0;
@@ -150,8 +173,7 @@
       font-size: 0.9rem;
     }
     @media (max-width: 820px) {
-      header, .grid { grid-template-columns: 1fr; }
-      .image-strip { grid-template-columns: 1fr; }
+      header, .grid, .image-strip { grid-template-columns: 1fr; }
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 520px) {
@@ -159,132 +181,114 @@
       .stats { grid-template-columns: 1fr; }
       .card { min-height: 150px; }
     }
-      .image-strip {
-      margin: 30px 0 0;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
-      gap: 12px;
-    }
-    .image-strip figure {
-      margin: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-    }
-    .image-strip img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 170px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-    .image-strip figcaption {
-      padding: 10px 12px 12px;
-      color: var(--muted);
-      font-family: "Inter", "Segoe UI", sans-serif;
-      font-size: 0.84rem;
-      line-height: 1.4;
-    }
-</style>
+  </style>
 </head>
 <body>
   <div class="shell">
     <header>
       <div>
         <p class="eyebrow">Philosophy HTML Archive</p>
-        <h1>鍝插鏂囨。鐩綍</h1>
-        <p class="intro">杩欓噷姹囨€讳簡鏈枃浠跺す涓敱 Word 杞崲鑰屾潵鐨?HTML 闀挎枃銆傞€傚悎鐩存帴鍙戝竷鍒?GitHub Pages锛岀敤浣滈槄璇汇€佸垎浜拰褰掓。鍏ュ彛銆?/p>
+        <h1>哲学文档目录</h1>
+        <p class="intro">这里汇总了本仓库中已经转换为 HTML 的长文页面，适合直接阅读、分享和通过 GitHub Pages 发布。</p>
       </div>
       <div class="stats" aria-label="站点统计">
-        <div class="stat"><strong>9</strong><span>篇 HTML 长文</span></div>
-        <div class="stat"><strong>4</strong><span>位哲学家肖像</span></div>
+        <div class="stat"><strong>12</strong><span>篇 HTML 长文</span></div>
+        <div class="stat"><strong>4</strong><span>张本地图像</span></div>
       </div>
     </header>
 
-    <section class="image-strip" aria-label="鍝插鍥惧儚棰勮">
+    <section class="image-strip" aria-label="哲学图像预览">
       <figure>
-        <img src="pic/german-idealists-starry-night.png" alt="寰峰浗鍙ゅ吀鍝插瀹舵槦绌哄浘鍍?>
-        <figcaption>寰峰浗鍙ゅ吀鍝插瀹朵笌鏄熺┖寮忔€濇兂鏅</figcaption>
+        <img src="pic/german-idealists-starry-night.png" alt="德国古典哲学家星空图像">
+        <figcaption>德国古典哲学与思想史图像</figcaption>
       </figure>
       <figure>
-        <img src="pic/Hussel-Heidegger-Sarte-Merleau-ponty.jfif" alt="鐜拌薄瀛︿笌瀛樺湪涓讳箟鏄熺┖鍥惧儚">
-        <figcaption>鐜拌薄瀛︿笌瀛樺湪涓讳箟</figcaption>
+        <img src="pic/Hussel-Heidegger-Sarte-Merleau-ponty.jfif" alt="现象学与存在主义图像">
+        <figcaption>现象学与存在主义</figcaption>
       </figure>
       <figure>
-        <img src="pic/phenomenology-existentialism-starry-night.png" alt="鐜拌薄瀛﹀瓨鍦ㄤ富涔夋槦绌哄浘鍍?>
-        <figcaption>鐜拌薄瀛﹂棶棰樼兢</figcaption>
+        <img src="pic/phenomenology-existentialism-starry-night.png" alt="现象学星空图像">
+        <figcaption>现象学问题群</figcaption>
       </figure>
     </section>
+
     <main>
-      <p class="section-title">鏂囩珷鍒楄〃</p>
-      <section class="grid" aria-label="鏂囩珷鍒楄〃">
+      <p class="section-title">文章列表</p>
+      <section class="grid" aria-label="文章列表">
         <a class="card" href="physics-unites.html">
           <span class="number">01</span>
-          <h2>鐗╃悊瀛﹀彶涓婄殑澶х粺涓€</h2>
-          <p>浠庣墰椤裤€侀害鍏嬫柉闊﹀埌閲忓瓙寮曞姏鐨勭粺涓€绾跨储銆?/p>
+          <h2>物理学史上的大统一</h2>
+          <p>从牛顿、麦克斯韦到量子引力的统一线索。</p>
         </a>
-        <a class="card" href="涓轰粈涔堝湪璐濆厠鑾遍偅閲?涓婂笣鐨勬劅鐭?鏄笘鐣屽瓨鍦ㄧ殑鍩虹-鑰屼笉鏄汉閮芥劅鐭ュ憿.html">
+        <a class="card" href="为什么在贝克莱那里-上帝的感知-是世界存在的基础-而不是人都感知呢.html">
           <span class="number">02</span>
-          <h2>涓轰粈涔堝湪璐濆厠鑾遍偅閲岋紝涓婂笣鐨勬劅鐭ワ紝鏄笘鐣屽瓨鍦ㄧ殑鍩虹锛岃€屼笉鏄汉閮芥劅鐭ュ憿锛?/h2>
-          <p>璐濆厠鑾便€佹劅鐭ャ€佷笘鐣屾寔缁€т笌涓婂笣鐨勫摬瀛︿綅缃€?/p>
+          <h2>贝克莱：上帝的感知为何是世界存在的基础</h2>
+          <p>感知、世界持续性与上帝在观念论中的哲学位置。</p>
         </a>
-        <a class="card" href="浜ㄥ埄瀵硅儭濉炲皵韬綋鐜拌薄瀛︾殑鎵瑰垽.html">
+        <a class="card" href="亨利对胡塞尔身体现象学的批判.html">
           <span class="number">03</span>
-          <h2>浜ㄥ埄瀵硅儭濉炲皵韬綋鐜拌薄瀛︾殑鎵瑰垽</h2>
-          <p>鐢熷懡鐜拌薄瀛﹀鎰忓悜鎬у拰韬綋闂鐨勬帹杩涖€?/p>
+          <h2>亨利对胡塞尔身体现象学的批判</h2>
+          <p>生命现象学对意向性和身体问题的推进。</p>
         </a>
-        <a class="card" href="浠€涔堟槸鏌忔媺鍥惧紡鐨勬亱鐖?html">
+        <a class="card" href="什么是柏拉图式的恋爱.html">
           <span class="number">04</span>
-          <h2>浠€涔堟槸鏌忔媺鍥惧紡鐨勬亱鐖憋紵</h2>
-          <p>浠庣埍娆层€佽韩浣撲箣缇庡埌缇庢湰韬殑鍝插鍗囧崕銆?/p>
-        </a>
-        <a class="card" href="寰峰浗鍙ゅ吀鍝插鐨勯€昏緫杩涚▼.html">
-          <span class="number">05</span>
-          <h2>寰峰浗鍙ゅ吀鍝插鐨勯€昏緫杩涚▼</h2>
-          <p>搴峰痉銆佽垂甯岀壒銆佽阿鏋椼€侀粦鏍煎皵鐨勯棶棰樺叧鑱斻€?/p>
-        </a>
-        <a class="card" href="鏌忔媺鍥句細楗瘒鐨勯€昏緫缁撴瀯.html">
-          <span class="number">06</span>
-          <h2>鏌忔媺鍥俱€婁細楗瘒銆嬬殑閫昏緫缁撴瀯</h2>
-          <p>鎸夐棶棰樻帹杩涢槄璇汇€婁細楗瘒銆嬬殑鐖辨璁鸿瘉銆?/p>
-        </a>
-        <a class="card" href="鐜拌薄瀛﹀彂灞曠嚎绱㈠垎鏋?html">
-          <span class="number">07</span>
-          <h2>鐜拌薄瀛﹀彂灞曠嚎绱㈠垎鏋?/h2>
-          <p>浠庤儭濉炲皵鍒板痉閲岃揪鐨勭幇璞″闂鍙樺舰銆?/p>
-        </a>
-        <a class="card" href="鑳″灏旈€昏緫鐮旂┒绗竴鍗风殑閫昏緫缁撴瀯.html">
-          <span class="number">08</span>
-          <h2>鑳″灏斻€婇€昏緫鐮旂┒銆嬬涓€鍗风殑閫昏緫缁撴瀯</h2>
-          <p>鎰忎箟銆佸璞°€佹剰鍚戞€т笌鏄庤瘉鐨勯棶棰橀摼銆?/p>
-        </a>
-        <a class="card" href="为什么在贝克莱那里，上帝的感知，是世界存在的基础，而不是人都感知呢？.html">
-          <span class="number">09</span>
-          <h2>为什么在贝克莱那里，上帝的感知，是世界存在的基础，而不是人都感知呢？</h2>
-          <p>围绕贝克莱观念论、感知连续性与上帝角色的哲学分析。</p>
-        </a>
-        <a class="card" href="什么是柏拉图式的恋爱？.html">
-          <span class="number">10</span>
           <h2>什么是柏拉图式的恋爱？</h2>
-          <p>从《会饮篇》脉络理解爱欲从感性到理念的上升。</p>
+          <p>从爱欲、身体之美到美本身的哲学上升。</p>
+        </a>
+        <a class="card" href="德国古典哲学的逻辑进程.html">
+          <span class="number">05</span>
+          <h2>德国古典哲学的逻辑进程</h2>
+          <p>康德、费希特、谢林、黑格尔的问题关联。</p>
+        </a>
+        <a class="card" href="柏拉图会饮篇的逻辑结构.html">
+          <span class="number">06</span>
+          <h2>柏拉图《会饮篇》的逻辑结构</h2>
+          <p>按问题推进阅读《会饮篇》的爱欲论证。</p>
+        </a>
+        <a class="card" href="现象学发展线索分析.html">
+          <span class="number">07</span>
+          <h2>现象学发展线索分析</h2>
+          <p>从胡塞尔到德里达的现象学问题变形。</p>
+        </a>
+        <a class="card" href="胡塞尔逻辑研究第一卷的逻辑结构.html">
+          <span class="number">08</span>
+          <h2>胡塞尔《逻辑研究》第一卷的逻辑结构</h2>
+          <p>意义、对象、意向性与明证的问题链。</p>
         </a>
         <a class="card" href="哥德尔不完备性定理.html">
-          <span class="number">11</span>
+          <span class="number">09</span>
           <h2>哥德尔不完备性定理</h2>
           <p>比较说谎者悖论、罗素悖论与哥德尔证明的逻辑边界。</p>
         </a>
         <a class="card" href="Attention_Is_All_You_Need_zh.html">
-          <span class="number">09</span>
-          <h2>Attention Is All You Need - 专业中文译读版</h2>
-          <p>Transformer 论文的中文专业译读，含核心公式、架构、训练、结果与术语表。</p>
+          <span class="number">10</span>
+          <h2>Attention Is All You Need 中文阅读页</h2>
+          <p>Transformer 论文的中文整理与网页化阅读版本。</p>
         </a>
-      </section>
+        <a class="card" href="Attention_Is_All_You_Need_arxiv.html">
+          <span class="number">11</span>
+          <h2>Attention Is All You Need 原文页面</h2>
+          <p>论文原文内容的 HTML 阅读入口。</p>
+        </a>
+        <a class="card" href="什么是柏拉图式的恋爱？.html">
+          <span class="number">12</span>
+          <h2>柏拉图式恋爱：补充版本</h2>
+          <p>围绕《会饮篇》与理念之爱的补充长文。</p>
+        </a>
+              <a class="card" href="Attention_Is_All_You_Need.html">
+          <span class="number">13</span>
+          <h2>Attention_Is_All_You_Need</h2>
+          <p>Transformer 论文 PDF 的统一入口与摘要说明页面。</p>
+        </a>              <a class="card" href="新建 Microsoft Word 文档 (2).html">
+          <span class="number">14</span>
+          <h2>新建 Microsoft Word 文档 (2)</h2>
+          <p>空 Word 文档的占位页面，等待后续内容补充。</p>
+        </a>      </section>
     </main>
 
     <footer>
-      GitHub Pages 鍙戝竷鍚庯紝浠撳簱涓婚〉浼氳嚜鍔ㄦ墦寮€鏈洰褰曢〉銆?    </footer>
+      GitHub Pages 发布后，仓库主页会自动显示本目录页。最后更新：2026-05-21。
+    </footer>
   </div>
 </body>
 </html>
