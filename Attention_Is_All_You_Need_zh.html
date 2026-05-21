@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attention Is All You Need - 专业中文译读版</title>
+  <style>
+    :root {
+      --paper: #f6efe3;
+      --ink: #171513;
+      --muted: #62584d;
+      --bronze: #a5743f;
+      --oxblood: #7d2f2a;
+      --blueblack: #1f3642;
+      --line: rgba(23, 21, 19, 0.16);
+      --soft: rgba(165, 116, 63, 0.11);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      line-height: 1.78;
+    }
+
+    a {
+      color: var(--oxblood);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 44px 24px 72px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 32px;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      font-family: "Inter", "Segoe UI", sans-serif;
+      color: var(--bronze);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .meta div {
+      border-top: 2px solid var(--bronze);
+      padding-top: 10px;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .toolbar a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      padding: 7px 12px;
+      background: rgba(255, 255, 255, 0.28);
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 14px;
+      color: var(--blueblack);
+      text-decoration: none;
+    }
+
+    .toc {
+      margin: 26px 0 44px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+      font-family: "Inter", "Segoe UI", sans-serif;
+    }
+
+    .toc a {
+      display: inline-block;
+      margin: 5px 18px 5px 0;
+      color: var(--blueblack);
+      font-size: 14px;
+    }
+
+    section {
+      margin: 48px 0;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 1.25;
+      margin: 0 0 18px;
+      color: var(--blueblack);
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 28px 0 12px;
+      color: var(--oxblood);
+    }
+
+    p {
+      margin: 0 0 15px;
+      font-size: 17px;
+    }
+
+    .lead {
+      font-size: 19px;
+      color: var(--blueblack);
+    }
+
+    .note {
+      border-left: 4px solid var(--bronze);
+      background: var(--soft);
+      padding: 16px 18px;
+      color: var(--blueblack);
+      margin: 22px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .panel h3 {
+      margin-top: 0;
+    }
+
+    .formula {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.36);
+      padding: 16px;
+      margin: 16px 0;
+      overflow-x: auto;
+      font-family: "Cambria Math", "Times New Roman", serif;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .term-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 22px;
+      margin-top: 18px;
+    }
+
+    .term {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+
+    .term strong {
+      color: var(--blueblack);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--blueblack);
+      background: rgba(31, 54, 66, 0.08);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-family: "Inter", "Segoe UI", sans-serif;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 28px 18px 52px;
+      }
+
+      .meta,
+      .grid,
+      .term-list {
+        grid-template-columns: 1fr;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">arXiv:1706.03762v7 / 中文专业译读版</p>
+      <h1>Attention Is All You Need</h1>
+      <p class="subtitle">Ashish Vaswani 等人的 Transformer 论文中文译读版。本文保留核心论证、关键公式、实验结论与术语对应，适合中文读者快速而准确地进入原论文。</p>
+      <div class="meta">
+        <div><strong>论文作者</strong>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin</div>
+        <div><strong>版本信息</strong>初稿提交于 2017-06-12；当前 arXiv v7 修订于 2023-08-02。</div>
+        <div><strong>本页内容</strong>基于 arXiv 官方 HTML 与 PDF 制作，译文采用专业中文技术表述。</div>
+      </div>
+      <div class="toolbar">
+        <a href="Attention_Is_All_You_Need.pdf">打开本地 PDF</a>
+        <a href="Attention_Is_All_You_Need_arxiv.html">打开保存的官方 HTML</a>
+        <a href="https://arxiv.org/abs/1706.03762">arXiv 摘要页</a>
+        <a href="https://arxiv.org/pdf/1706.03762">官方 PDF 链接</a>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="目录">
+      <a href="#abstract">摘要</a>
+      <a href="#intro">1 引言</a>
+      <a href="#background">2 背景</a>
+      <a href="#architecture">3 模型架构</a>
+      <a href="#self-attention">4 为什么是自注意力</a>
+      <a href="#training">5 训练</a>
+      <a href="#results">6 结果</a>
+      <a href="#conclusion">7 结论</a>
+      <a href="#terms">术语表</a>
+    </nav>
+
+    <section id="abstract">
+      <h2>摘要</h2>
+      <p class="lead">主流序列转导模型通常建立在复杂的循环神经网络或卷积神经网络之上，并采用编码器-解码器结构。性能最好的模型还会通过注意力机制连接编码器与解码器。本文提出一种新的、结构更简单的网络架构：Transformer。它完全基于注意力机制，彻底舍弃循环结构和卷积结构。</p>
+      <p>在两项机器翻译任务上的实验表明，Transformer 在质量上优于既有模型，同时具有更强的并行化能力，训练所需时间显著减少。在 WMT 2014 英译德任务上，模型达到 28.4 BLEU，比包括集成模型在内的既有最佳结果高出 2 个 BLEU 以上。在 WMT 2014 英译法任务上，单模型在 8 块 GPU 上训练 3.5 天后达到 41.8 BLEU，训练成本仅为文献中最佳模型的一小部分。论文还通过英语成分句法分析任务说明，Transformer 能够很好地泛化到翻译之外的任务。</p>
+    </section>
+
+    <section id="intro">
+      <h2>1 引言</h2>
+      <p>循环神经网络，尤其是长短期记忆网络和门控循环网络，长期是语言建模、机器翻译等序列建模与序列转导问题中的主流方法。许多研究持续推进循环语言模型和编码器-解码器架构的边界。</p>
+      <p>循环模型通常沿输入和输出序列的符号位置分解计算。若将序列位置与计算时间步对齐，模型会根据前一隐藏状态和当前位置输入生成隐藏状态序列。这种内在的顺序性使训练样本内部难以并行化。当序列较长时，内存限制又会限制跨样本批处理规模，因此顺序计算成为效率瓶颈。尽管分解技巧和条件计算能改善效率，顺序计算这一根本约束仍然存在。</p>
+      <p>注意力机制已经成为序列建模和转导模型的重要组成部分。它允许模型不受输入或输出序列距离的限制来建模依赖关系。然而在多数情形中，注意力仍然与循环网络结合使用。</p>
+      <p>本文提出的 Transformer 抛弃循环结构，完全依靠注意力机制在输入与输出之间建立全局依赖。由于这种架构允许显著更高程度的并行化，它可以在 8 块 P100 GPU 上仅训练约 12 小时后，在翻译质量上达到新的最佳水平。</p>
+    </section>
+
+    <section id="background">
+      <h2>2 背景</h2>
+      <p>减少顺序计算同样是 Extended Neural GPU、ByteNet 和 ConvS2S 等模型的核心动机。这些模型以卷积神经网络为基础，对所有输入和输出位置并行计算隐藏表示。它们的问题在于：两个任意位置之间建立联系所需的操作数会随位置距离增长。ConvS2S 中这种增长是线性的，ByteNet 中则是对数级的。这会使模型更难学习远距离依赖。</p>
+      <p>Transformer 将任意两个位置之间的依赖路径缩短为常数数量的操作。代价是注意力加权平均可能降低有效分辨率，论文通过多头注意力机制来抵消这一影响。</p>
+      <p>自注意力又称内部注意力，是一种在单个序列的不同位置之间建立关系、进而计算序列表示的注意力机制。它已经成功用于阅读理解、抽象式摘要、文本蕴涵以及任务无关句子表示学习等任务。</p>
+      <p>据论文作者所知，Transformer 是第一个完全依赖自注意力来计算输入和输出表示的转导模型，它不使用按序列位置对齐的 RNN，也不使用卷积。后续章节将说明 Transformer 的结构，解释采用自注意力的动机，并比较它相对于循环和卷积模型的优势。</p>
+    </section>
+
+    <section id="architecture">
+      <h2>3 模型架构</h2>
+      <p>大多数竞争力强的神经序列转导模型采用编码器-解码器结构。编码器把输入符号表示序列映射为连续表示序列；解码器再基于这些表示逐个生成输出符号。每一步生成都具有自回归性质，即生成下一个符号时会使用此前已经生成的符号作为额外输入。</p>
+      <p>Transformer 沿用这一整体框架，但在编码器和解码器中都采用堆叠的自注意力层与逐位置全连接层。原论文图 1 展示了编码器与解码器的左右两部分结构。</p>
+
+      <div class="grid">
+        <div class="panel">
+          <h3>3.1 编码器与解码器栈</h3>
+          <p><strong>编码器。</strong>编码器由 N = 6 个相同层堆叠而成。每层包含两个子层：多头自注意力机制，以及逐位置全连接前馈网络。每个子层外部使用残差连接，随后进行层归一化。形式上，子层输出为 LayerNorm(x + Sublayer(x))。为了支持这些残差连接，模型中的所有子层以及嵌入层都输出 d_model = 512 维表示。</p>
+          <p><strong>解码器。</strong>解码器同样由 N = 6 个相同层堆叠而成。除了编码器层中的两个子层外，解码器还插入第三个子层，对编码器栈的输出执行多头注意力。解码器中的自注意力子层经过掩码处理，禁止当前位置关注后续位置。该掩码与右移的输出嵌入共同保证位置 i 的预测只能依赖小于 i 的已知输出。</p>
+        </div>
+
+        <div class="panel">
+          <h3>3.2 注意力</h3>
+          <p>注意力函数可以描述为：将一个查询和一组键-值对映射为输出。查询、键、值和输出都是向量。输出是值向量的加权和，每个值的权重由查询与相应键之间的兼容性函数计算得到。</p>
+          <p>论文采用的是缩放点积注意力。输入包含维度为 d_k 的查询和键，以及维度为 d_v 的值。模型计算查询与所有键的点积，将每个点积除以 sqrt(d_k)，再用 softmax 得到值向量上的权重。</p>
+        </div>
+      </div>
+
+      <div class="formula">Attention(Q, K, V) = softmax(QK<sup>T</sup> / sqrt(d<sub>k</sub>))V</div>
+
+      <p>点积注意力和加性注意力在理论复杂度上相近，但点积注意力能用高度优化的矩阵乘法实现，因此在实践中更快、更节省空间。当 d_k 较大时，未缩放的点积可能幅度过大，使 softmax 落入梯度极小的区域。缩放因子 1 / sqrt(d_k) 正是为了抵消这一问题。</p>
+
+      <h3>3.2.2 多头注意力</h3>
+      <p>相比只执行一次 d_model 维的注意力，论文发现将查询、键和值分别线性投影 h 次更有效。每次投影后并行执行注意力函数，得到多个低维输出；这些输出拼接后再次线性投影，形成最终结果。</p>
+      <div class="formula">MultiHead(Q, K, V) = Concat(head<sub>1</sub>, ..., head<sub>h</sub>)W<sup>O</sup></div>
+      <div class="formula">head<sub>i</sub> = Attention(QW<sub>i</sub><sup>Q</sup>, KW<sub>i</sub><sup>K</sup>, VW<sub>i</sub><sup>V</sup>)</div>
+      <p>多头注意力让模型能够在不同位置同时关注来自不同表示子空间的信息。单个注意力头往往会因平均化而削弱这种表达能力。论文使用 h = 8 个并行注意力头，每个头取 d_k = d_v = d_model / h = 64，因此总计算成本与单头全维注意力大体相当。</p>
+
+      <h3>3.2.3 注意力在模型中的三种用法</h3>
+      <p>第一，在编码器-解码器注意力层中，查询来自上一层解码器，键和值来自编码器输出。这使解码器每个位置都能关注输入序列的所有位置。第二，编码器包含自注意力层，键、值和查询都来自编码器上一层输出，编码器中每个位置都可关注上一层所有位置。第三，解码器自注意力层允许每个位置关注当前位置及其之前的位置，但通过掩码阻止未来信息流入，以保持自回归性质。</p>
+
+      <h3>3.3 逐位置前馈网络</h3>
+      <p>除注意力子层外，编码器和解码器的每层还包含一个全连接前馈网络。它对每个位置分别且相同地应用，由两个线性变换和中间的 ReLU 激活组成。</p>
+      <div class="formula">FFN(x) = max(0, xW<sub>1</sub> + b<sub>1</sub>)W<sub>2</sub> + b<sub>2</sub></div>
+      <p>这些线性变换在不同位置共享，但不同层之间使用不同参数。也可以把它理解为两个卷积核大小为 1 的卷积。输入和输出维度为 d_model = 512，中间层维度为 d_ff = 2048。</p>
+
+      <h3>3.4 嵌入与 Softmax</h3>
+      <p>模型使用学习得到的嵌入将输入与输出 token 转换为 d_model 维向量，并使用线性变换和 softmax 将解码器输出转换为下一个 token 的概率分布。论文在两个嵌入层与 softmax 前线性变换之间共享同一个权重矩阵，并在嵌入层中将权重乘以 sqrt(d_model)。</p>
+
+      <h3>3.5 位置编码</h3>
+      <p>由于模型不含循环和卷积，必须向输入中注入关于 token 相对或绝对位置的信息。论文在编码器和解码器底部的输入嵌入中加入位置编码。位置编码与嵌入具有相同维度，因此二者可以直接相加。</p>
+      <div class="formula">PE(pos, 2i) = sin(pos / 10000<sup>2i / d_model</sup>)</div>
+      <div class="formula">PE(pos, 2i + 1) = cos(pos / 10000<sup>2i / d_model</sup>)</div>
+      <p>其中 pos 是位置，i 是维度。每个位置编码维度对应一个正弦曲线，波长按几何级数变化。作者选择这种函数，是因为它可能使模型更容易学习相对位置关系：对于任意固定偏移 k，PE(pos + k) 可表示为 PE(pos) 的线性函数。论文也测试了学习式位置嵌入，结果与正弦位置编码几乎相同，但正弦版本更可能外推到训练时未见过的更长序列。</p>
+    </section>
+
+    <section id="self-attention">
+      <h2>4 为什么是自注意力</h2>
+      <p>论文从三个标准比较自注意力层、循环层和卷积层。第一，每层总计算复杂度。第二，可并行计算的程度，具体用所需最少顺序操作数衡量。第三，网络中远距离依赖之间的路径长度。学习远距离依赖是许多序列转导任务的关键挑战；前向和反向信号在网络中需要经过的路径越短，学习这种依赖就越容易。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>层类型</th>
+            <th>每层复杂度</th>
+            <th>顺序操作数</th>
+            <th>最大路径长度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>自注意力</td>
+            <td>O(n² d)</td>
+            <td>O(1)</td>
+            <td>O(1)</td>
+          </tr>
+          <tr>
+            <td>循环层</td>
+            <td>O(n d²)</td>
+            <td>O(n)</td>
+            <td>O(n)</td>
+          </tr>
+          <tr>
+            <td>卷积层</td>
+            <td>O(k n d²)</td>
+            <td>O(1)</td>
+            <td>O(log<sub>k</sub> n)</td>
+          </tr>
+          <tr>
+            <td>受限自注意力</td>
+            <td>O(r n d)</td>
+            <td>O(1)</td>
+            <td>O(n / r)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>自注意力层以常数数量的顺序操作连接所有位置，而循环层需要 O(n) 个顺序操作。当序列长度 n 小于表示维度 d 时，自注意力在计算复杂度上也比循环层更快。现代机器翻译系统常用的 word-piece 和 byte-pair 表示中，这种条件通常成立。</p>
+      <p>对于很长的序列，可以将自注意力限制在局部邻域内，以改善计算性能，但最大路径长度会增加到 O(n / r)。卷积层若要连接任意一对位置，往往需要堆叠多层卷积；即使使用可分离卷积，其复杂度也与自注意力加逐位置前馈层的组合相当。</p>
+      <p>论文还指出，自注意力有潜在的可解释性优势。作者观察注意力分布后发现，单个注意力头会学习到不同功能，许多头表现出与句法和语义结构相关的行为。</p>
+    </section>
+
+    <section id="training">
+      <h2>5 训练</h2>
+      <h3>5.1 训练数据与批处理</h3>
+      <p>英德任务使用标准 WMT 2014 English-German 数据集，约 450 万个句对。句子通过 byte-pair encoding 编码，源语言和目标语言共享约 37000 个 token 的词表。英法任务使用更大的 WMT 2014 English-French 数据集，约 3600 万个句子，并使用 32000 个 word-piece 的词表。句对按近似序列长度组成批次，每个训练批次约包含 25000 个源 token 和 25000 个目标 token。</p>
+
+      <h3>5.2 硬件与训练计划</h3>
+      <p>模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。基础模型每步约 0.4 秒，共训练 100000 步，约 12 小时。大模型每步约 1.0 秒，共训练 300000 步，约 3.5 天。</p>
+
+      <h3>5.3 优化器</h3>
+      <p>论文使用 Adam 优化器，β1 = 0.9，β2 = 0.98，ε = 10^-9。学习率在训练过程中按如下公式变化：</p>
+      <div class="formula">lrate = d_model<sup>-0.5</sup> · min(step_num<sup>-0.5</sup>, step_num · warmup_steps<sup>-1.5</sup>)</div>
+      <p>这意味着学习率在最初 warmup_steps 个训练步内线性上升，之后按步数的平方根倒数下降。论文取 warmup_steps = 4000。</p>
+
+      <h3>5.4 正则化</h3>
+      <p>论文使用残差 dropout 和标签平滑。残差 dropout 应用于每个子层输出，在其与子层输入相加并归一化之前执行；嵌入与位置编码相加后的结果也使用 dropout。基础模型的 dropout 率为 0.1。标签平滑取 ε_ls = 0.1，它会使困惑度变差，因为模型学习得更不确定，但可以提升准确率和 BLEU 分数。</p>
+    </section>
+
+    <section id="results">
+      <h2>6 结果</h2>
+      <h3>6.1 机器翻译</h3>
+      <p>在 WMT 2014 英译德任务上，Transformer big 模型达到 28.4 BLEU，超过此前包括集成模型在内的最佳结果 2.0 BLEU 以上，建立了新的最佳水平。即使是基础模型，也以远低于竞争模型的训练成本超过了此前已发表的模型和集成模型。</p>
+      <p>在 WMT 2014 英译法任务上，大模型取得 41.8 BLEU 的单模型成绩，训练成本低于此前最佳模型的四分之一。论文还使用 checkpoint 平均、beam search、长度惩罚等推理设置，以获得稳定结果。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>模型</th>
+            <th>英译德 BLEU</th>
+            <th>英译法 BLEU</th>
+            <th>要点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Transformer base</td>
+            <td>27.3</td>
+            <td>38.1</td>
+            <td>训练成本低，已超过此前多个公开模型。</td>
+          </tr>
+          <tr>
+            <td>Transformer big</td>
+            <td>28.4</td>
+            <td>41.8</td>
+            <td>在论文报告的主要翻译任务上达到当时最佳或单模型最佳水平。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 模型变体</h3>
+      <p>论文通过改变注意力头数、键和值的维度、模型深度、前馈层维度、dropout 和位置编码方式来评估 Transformer 各组件的重要性。结果显示：单头注意力比最佳设置低 0.9 BLEU，注意力头过多也会降低质量；减小键维度会损害模型质量，说明兼容性判断并不容易；更大的模型通常表现更好；dropout 对防止过拟合很有帮助；用学习式位置嵌入替换正弦位置编码，结果几乎相同。</p>
+
+      <h3>6.3 英语成分句法分析</h3>
+      <p>为了验证 Transformer 是否能泛化到其他任务，论文在英语成分句法分析上进行了实验。该任务输出具有强结构约束，且输出长度通常明显长于输入。作者在 Penn Treebank 的 WSJ 数据上训练 4 层 Transformer，并在半监督设置中使用更大的高置信语料。尽管没有针对任务做大量调参，模型仍获得了很强结果，在仅使用 4 万句 WSJ 训练数据时也超过 BerkeleyParser。</p>
+    </section>
+
+    <section id="conclusion">
+      <h2>7 结论</h2>
+      <p>论文提出了 Transformer，这是第一个完全基于注意力的序列转导模型。它用多头自注意力替代了编码器-解码器架构中常见的循环层。</p>
+      <p>在翻译任务中，Transformer 的训练速度显著快于基于循环或卷积层的架构，并在 WMT 2014 英德和英法任务上达到新的最佳水平。作者认为注意力模型具有广阔前景，计划将 Transformer 扩展到文本之外的输入和输出模态，并研究局部、受限注意力机制，以高效处理图像、音频和视频等大规模输入输出。同时，减少生成过程的顺序性也是后续研究目标之一。</p>
+      <p class="note">译读要点：Transformer 的革命性不只是“用了注意力”，而是把注意力从辅助机制提升为序列转导架构的主体机制。它同时解决了远距离依赖路径、训练并行化和模型表达子空间分工三个问题。</p>
+    </section>
+
+    <section id="terms">
+      <h2>核心术语表</h2>
+      <div class="term-list">
+        <div class="term"><strong>sequence transduction</strong><br>序列转导，指将一个序列映射为另一个序列的任务，如机器翻译。</div>
+        <div class="term"><strong>self-attention</strong><br>自注意力，同一序列内部不同位置之间相互计算注意力。</div>
+        <div class="term"><strong>encoder-decoder attention</strong><br>编码器-解码器注意力，解码器查询编码器输出，以对输入序列整体进行条件化。</div>
+        <div class="term"><strong>scaled dot-product attention</strong><br>缩放点积注意力，通过除以 sqrt(d_k) 稳定 softmax 梯度。</div>
+        <div class="term"><strong>multi-head attention</strong><br>多头注意力，并行地在不同表示子空间中执行注意力，再拼接投影。</div>
+        <div class="term"><strong>position-wise feed-forward network</strong><br>逐位置前馈网络，对每个位置独立应用同一个两层前馈变换。</div>
+        <div class="term"><strong>positional encoding</strong><br>位置编码，为无循环、无卷积的模型提供序列位置信息。</div>
+        <div class="term"><strong>label smoothing</strong><br>标签平滑，降低模型对硬标签的过度自信，常能提升泛化和 BLEU。</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>来源：Vaswani et al., Attention Is All You Need, arXiv:1706.03762v7。中文译读由本地生成，用于学习和研究。完整原文请参见页面顶部的本地 PDF 与官方 arXiv 链接。</p>
+    </footer>
+  </main>
+</body>
+</html>
