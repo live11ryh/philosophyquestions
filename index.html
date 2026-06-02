@@ -6,181 +6,35 @@
   <title>哲学文档 HTML 目录</title>
   <meta name="description" content="哲学、逻辑与思想史文档的 HTML 阅读目录。">
   <style>
-    :root {
-      --sky: #e8f5ff;
-      --mint: #e8f8ef;
-      --foam: #f7fcfb;
-      --ink: #10212a;
-      --muted: #587174;
-      --deep: #155b64;
-      --green: #32856a;
-      --line: rgba(16, 33, 42, 0.14);
-      --panel: rgba(255, 255, 255, 0.68);
-    }
+    :root { --sky:#e8f5ff; --mint:#e8f8ef; --foam:#f7fcfb; --ink:#10212a; --muted:#587174; --deep:#155b64; --green:#32856a; --line:rgba(16,33,42,.14); --panel:rgba(255,255,255,.68); }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 8%, rgba(255,255,255,0.82), transparent 28%),
-        linear-gradient(135deg, var(--sky) 0%, var(--foam) 48%, var(--mint) 100%);
-      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      line-height: 1.75;
-    }
-    a { color: inherit; }
-    .shell {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: clamp(34px, 7vw, 82px) 0 56px;
-    }
-    header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.46fr);
-      gap: clamp(24px, 5vw, 64px);
-      align-items: end;
-      padding-bottom: 30px;
-      border-bottom: 1px solid var(--line);
-    }
-    .eyebrow {
-      margin: 0 0 16px;
-      font-family: "Inter", "Segoe UI", sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--green);
-      font-weight: 800;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(2.5rem, 7vw, 6.2rem);
-      line-height: 1.02;
-    }
-    .intro {
-      max-width: 720px;
-      margin: 24px 0 0;
-      color: var(--deep);
-      font-size: clamp(1.04rem, 1.7vw, 1.24rem);
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      font-family: "Inter", "Segoe UI", sans-serif;
-    }
-    .stat {
-      min-height: 108px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-    }
-    .stat strong {
-      display: block;
-      font-size: 2rem;
-      line-height: 1;
-      color: var(--deep);
-      margin-bottom: 10px;
-    }
-    .stat span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .image-strip {
-      margin: 30px 0 0;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
-      gap: 12px;
-    }
-    .image-strip figure {
-      margin: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-    }
-    .image-strip img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 170px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-    .image-strip figcaption {
-      padding: 10px 12px 12px;
-      color: var(--muted);
-      font-family: "Inter", "Segoe UI", sans-serif;
-      font-size: 0.84rem;
-      line-height: 1.4;
-    }
-    main { padding-top: 34px; }
-    .section-title {
-      margin: 0 0 18px;
-      font-family: "Inter", "Segoe UI", sans-serif;
-      font-size: 0.84rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card {
-      display: flex;
-      flex-direction: column;
-      min-height: 178px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      text-decoration: none;
-      box-shadow: 0 18px 48px rgba(21, 91, 100, 0.08);
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(21, 91, 100, 0.34);
-      background: rgba(255, 255, 255, 0.82);
-    }
-    .card .number {
-      font-family: "Inter", "Segoe UI", sans-serif;
-      color: var(--green);
-      font-weight: 800;
-      font-size: 0.82rem;
-      margin-bottom: 16px;
-    }
-    .card h2 {
-      margin: 0;
-      font-size: clamp(1.28rem, 2vw, 1.68rem);
-      line-height: 1.32;
-    }
-    .card p {
-      margin: auto 0 0;
-      padding-top: 18px;
-      color: var(--muted);
-      font-family: "Inter", "Segoe UI", sans-serif;
-      font-size: 0.9rem;
-    }
-    footer {
-      margin-top: 36px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-family: "Inter", "Segoe UI", sans-serif;
-      font-size: 0.9rem;
-    }
-    @media (max-width: 820px) {
-      header, .grid, .image-strip { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 520px) {
-      .shell { width: min(100% - 28px, 1120px); }
-      .stats { grid-template-columns: 1fr; }
-      .card { min-height: 150px; }
-    }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 12% 8%,rgba(255,255,255,.82),transparent 28%),linear-gradient(135deg,var(--sky),var(--foam) 48%,var(--mint)); font-family:"Noto Serif SC","Songti SC","SimSun",serif; line-height:1.75; }
+    a { color:inherit; }
+    .shell { width:min(1120px,calc(100% - 40px)); margin:auto; padding:clamp(34px,7vw,82px) 0 56px; }
+    header { display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,.46fr); gap:clamp(24px,5vw,64px); align-items:end; padding-bottom:30px; border-bottom:1px solid var(--line); }
+    .eyebrow,.section-title { margin:0 0 16px; font-family:"Inter","Segoe UI",sans-serif; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--green); font-weight:800; }
+    h1 { margin:0; font-size:clamp(2.5rem,7vw,6.2rem); line-height:1.02; }
+    .intro { max-width:720px; margin:24px 0 0; color:var(--deep); font-size:clamp(1.04rem,1.7vw,1.24rem); }
+    .stats,.image-strip,.grid { display:grid; gap:12px; }
+    .stats { grid-template-columns:repeat(2,minmax(0,1fr)); font-family:"Inter","Segoe UI",sans-serif; }
+    .stat,.image-strip figure,.card { border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .stat { min-height:108px; padding:18px; }
+    .stat strong { display:block; margin-bottom:10px; color:var(--deep); font-size:2rem; line-height:1; }
+    .stat span,.card p,.image-strip figcaption,footer { color:var(--muted); font-family:"Inter","Segoe UI",sans-serif; font-size:.9rem; }
+    .image-strip { margin-top:30px; grid-template-columns:1.35fr 1fr 1fr; }
+    .image-strip figure { margin:0; overflow:hidden; }
+    .image-strip img { display:block; width:100%; height:100%; min-height:170px; aspect-ratio:16/9; object-fit:cover; }
+    .image-strip figcaption { padding:10px 12px 12px; }
+    main { padding-top:34px; }
+    .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .card { display:flex; flex-direction:column; min-height:178px; padding:22px; text-decoration:none; box-shadow:0 18px 48px rgba(21,91,100,.08); transition:transform 160ms ease,border-color 160ms ease; }
+    .card:hover { transform:translateY(-3px); border-color:rgba(21,91,100,.34); }
+    。number { margin-bottom:16px; color:var(--green); font-family:"Inter","Segoe UI",sans-serif; font-size:.82rem; font-weight:800; }
+    。card h2 { margin:0; font-size:clamp(1.28rem,2vw,1.68rem); line-height:1.32; }
+    。card p { margin:auto 0 0; padding-top:18px; }
+    footer { margin-top:36px; padding-top:22px; border-top:1px solid var(--line); }
+    @media(max-width:820px){header,.grid,.image-strip{grid-template-columns:1fr}}
+    @media(max-width:520px){.shell{width:min(100% - 28px,1120px)}.stats{grid-template-columns:1fr}.card{min-height:150px}}
   </style>
 </head>
 <body>
@@ -189,106 +43,34 @@
       <div>
         <p class="eyebrow">Philosophy HTML Archive</p>
         <h1>哲学文档目录</h1>
-        <p class="intro">这里汇总了本仓库中已经转换为 HTML 的长文页面，适合直接阅读、分享和通过 GitHub Pages 发布。</p>
+        <p class="intro">这里汇总了仓库中已经转换为 HTML 的长文页面，适合直接阅读、分享和通过 GitHub Pages 发布。</p>
       </div>
-      <div class="stats" aria-label="站点统计">
-        <div class="stat"><strong>12</strong><span>篇 HTML 长文</span></div>
-        <div class="stat"><strong>4</strong><span>张本地图像</span></div>
-      </div>
+      <div class="stats"><div class="stat"><strong>13</strong><span>篇 HTML 长文</span></div><div class="stat"><strong>4</strong><span>张本地图像</span></div></div>
     </header>
-
-    <section class="image-strip" aria-label="哲学图像预览">
-      <figure>
-        <img src="pic/german-idealists-starry-night.png" alt="德国古典哲学家星空图像">
-        <figcaption>德国古典哲学与思想史图像</figcaption>
-      </figure>
-      <figure>
-        <img src="pic/Hussel-Heidegger-Sarte-Merleau-ponty.jfif" alt="现象学与存在主义图像">
-        <figcaption>现象学与存在主义</figcaption>
-      </figure>
-      <figure>
-        <img src="pic/phenomenology-existentialism-starry-night.png" alt="现象学星空图像">
-        <figcaption>现象学问题群</figcaption>
-      </figure>
+    <section class="image-strip">
+      <figure><img src="pic/german-idealists-starry-night.png" alt="德国古典哲学图像"><figcaption>德国古典哲学与思想史</figcaption></figure>
+      <figure><img src="pic/Hussel-Heidegger-Sarte-Merleau-ponty.jfif" alt="现象学图像"><figcaption>现象学与存在主义</figcaption></figure>
+      <figure><img src="pic/phenomenology-existentialism-starry-night.png" alt="现象学星空图像"><figcaption>现象学问题群</figcaption></figure>
     </section>
-
     <main>
       <p class="section-title">文章列表</p>
-      <section class="grid" aria-label="文章列表">
-        <a class="card" href="physics-unites.html">
-          <span class="number">01</span>
-          <h2>物理学史上的大统一</h2>
-          <p>从牛顿、麦克斯韦到量子引力的统一线索。</p>
-        </a>
-        <a class="card" href="为什么在贝克莱那里-上帝的感知-是世界存在的基础-而不是人都感知呢.html">
-          <span class="number">02</span>
-          <h2>贝克莱：上帝的感知为何是世界存在的基础</h2>
-          <p>感知、世界持续性与上帝在观念论中的哲学位置。</p>
-        </a>
-        <a class="card" href="亨利对胡塞尔身体现象学的批判.html">
-          <span class="number">03</span>
-          <h2>亨利对胡塞尔身体现象学的批判</h2>
-          <p>生命现象学对意向性和身体问题的推进。</p>
-        </a>
-        <a class="card" href="什么是柏拉图式的恋爱.html">
-          <span class="number">04</span>
-          <h2>什么是柏拉图式的恋爱？</h2>
-          <p>从爱欲、身体之美到美本身的哲学上升。</p>
-        </a>
-        <a class="card" href="德国古典哲学的逻辑进程.html">
-          <span class="number">05</span>
-          <h2>德国古典哲学的逻辑进程</h2>
-          <p>康德、费希特、谢林、黑格尔的问题关联。</p>
-        </a>
-        <a class="card" href="柏拉图会饮篇的逻辑结构.html">
-          <span class="number">06</span>
-          <h2>柏拉图《会饮篇》的逻辑结构</h2>
-          <p>按问题推进阅读《会饮篇》的爱欲论证。</p>
-        </a>
-        <a class="card" href="现象学发展线索分析.html">
-          <span class="number">07</span>
-          <h2>现象学发展线索分析</h2>
-          <p>从胡塞尔到德里达的现象学问题变形。</p>
-        </a>
-        <a class="card" href="胡塞尔逻辑研究第一卷的逻辑结构.html">
-          <span class="number">08</span>
-          <h2>胡塞尔《逻辑研究》第一卷的逻辑结构</h2>
-          <p>意义、对象、意向性与明证的问题链。</p>
-        </a>
-        <a class="card" href="哥德尔不完备性定理.html">
-          <span class="number">09</span>
-          <h2>哥德尔不完备性定理</h2>
-          <p>比较说谎者悖论、罗素悖论与哥德尔证明的逻辑边界。</p>
-        </a>
-        <a class="card" href="Attention_Is_All_You_Need_zh.html">
-          <span class="number">10</span>
-          <h2>Attention Is All You Need 中文阅读页</h2>
-          <p>Transformer 论文的中文整理与网页化阅读版本。</p>
-        </a>
-        <a class="card" href="Attention_Is_All_You_Need_arxiv.html">
-          <span class="number">11</span>
-          <h2>Attention Is All You Need 原文页面</h2>
-          <p>论文原文内容的 HTML 阅读入口。</p>
-        </a>
-        <a class="card" href="什么是柏拉图式的恋爱？.html">
-          <span class="number">12</span>
-          <h2>柏拉图式恋爱：补充版本</h2>
-          <p>围绕《会饮篇》与理念之爱的补充长文。</p>
-        </a>
-              <a class="card" href="Attention_Is_All_You_Need.html">
-          <span class="number">13</span>
-          <h2>Attention_Is_All_You_Need</h2>
-          <p>Transformer 论文 PDF 的统一入口与摘要说明页面。</p>
-        </a>              <a class="card" href="新建 Microsoft Word 文档 (2).html">
-          <span class="number">14</span>
-          <h2>新建 Microsoft Word 文档 (2)</h2>
-          <p>空 Word 文档的占位页面，等待后续内容补充。</p>
-        </a>      </section>
+      <section class="grid">
+        <a class="card" href="physics-unites.html"><span class="number">01</span><h2>物理学史上的大统一</h2><p>从牛顿、麦克斯韦到量子引力的统一线索。</p></a>
+        <a class="card" href="为什么在贝克莱那里-上帝的感知-是世界存在的基础-而不是人都感知呢.html"><span class="number">02</span><h2>贝克莱：上帝的感知为何是世界存在的基础</h2><p>感知、世界持续性与上帝在观念论中的哲学位置。</p></a>
+        <a class="card" href="亨利对胡塞尔身体现象学的批判.html"><span class="number">03</span><h2>亨利对胡塞尔身体现象学的批判</h2><p>生命现象学对意向性和身体问题的推进。</p></a>
+        <a class="card" href="什么是柏拉图式的恋爱.html"><span class="number">04</span><h2>什么是柏拉图式的恋爱？</h2><p>从爱欲、身体之美到美本身的哲学上升。</p></a>
+        <a class="card" href="德国古典哲学的逻辑进程.html"><span class="number">05</span><h2>德国古典哲学的逻辑进程</h2><p>康德、费希特、谢林、黑格尔的问题关联。</p></a>
+        <a class="card" href="柏拉图会饮篇的逻辑结构.html"><span class="number">06</span><h2>柏拉图《会饮篇》的逻辑结构</h2><p>按问题推进阅读《会饮篇》的爱欲论证。</p></a>
+        <a class="card" href="现象学发展线索分析.html"><span class="number">07</span><h2>现象学发展线索分析</h2><p>从胡塞尔到德里达的现象学问题变形。</p></a>
+        <a class="card" href="胡塞尔逻辑研究第一卷的逻辑结构.html"><span class="number">08</span><h2>胡塞尔《逻辑研究》第一卷的逻辑结构</h2><p>意义、对象、意向性与明证的问题链。</p></a>
+        <a class="card" href="哥德尔不完备性定理.html"><span class="number">09</span><h2>哥德尔不完备性定理</h2><p>比较悖论与哥德尔证明的逻辑边界。</p></a>
+        <a class="card" href="Attention_Is_All_You_Need_zh.html"><span class="number">10</span><h2>Attention Is All You Need 中文阅读页</h2><p>Transformer 论文的中文整理与网页化阅读版本。</p></a>
+        <a class="card" href="Attention_Is_All_You_Need_arxiv.html"><span class="number">11</span><h2>Attention Is All You Need 原文页面</h2><p>论文原文内容的 HTML 阅读入口。</p></a>
+        <a class="card" href="什么是柏拉图式的恋爱？.html"><span class="number">12</span><h2>柏拉图式恋爱：补充版本</h2><p>围绕《会饮篇》与理念之爱的补充长文。</p></a>
+        <a class="card" href="philosophy-trends-report-20260519 (1).html"><span class="number">13</span><h2>最近一月哲学论文热度观察报告</h2><p>AI、非人类认知、过程形而上学与学术制度反思的近月观察。</p></a>
+      </section>
     </main>
-
-    <footer>
-      GitHub Pages 发布后，仓库主页会自动显示本目录页。最后更新：2026-05-21。
-    </footer>
+    <footer>GitHub Pages 发布后，仓库主页会自动显示本目录页。最后更新：2026-06-02。</footer>
   </div>
 </body>
 </html>
