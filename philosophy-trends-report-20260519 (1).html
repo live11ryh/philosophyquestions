@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>philosophy-trends-report-20260519 (1)</title>
+  <meta name="description" content="philosophy-trends-report-20260519 (1) - 自动发布生成页面">
+  <style>
+:root {
+  --paper: #f6efe3;
+  --paper-deep: #eadfcf;
+  --ink: #171513;
+  --muted: #62584d;
+  --bronze: #a5743f;
+  --oxblood: #7d2f2a;
+  --blueblack: #1f3642;
+  --line: rgba(23, 21, 19, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  line-height: 1.85;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(0deg, rgba(23,21,19,0.025), rgba(23,21,19,0.025) 1px, transparent 1px, transparent 5px);
+  z-index: -1;
+}
+.page-shell { min-height: 100vh; }
+.hero {
+  padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 72px) 32px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+}
+.eyebrow {
+  margin: 0 0 18px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  font-weight: 700;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  line-height: 1.05;
+}
+.hero-subtitle {
+  max-width: 740px;
+  margin: 22px 0 0;
+  color: var(--blueblack);
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.hero-meta span {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  min-width: 118px;
+}
+.portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+.portrait-card {
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.portrait-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.78) contrast(1.04);
+}
+.portrait-card figcaption {
+  padding: 10px 10px 12px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.portrait-card strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.82rem;
+  margin-bottom: 2px;
+}
+.layout {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding: 32px clamp(20px, 5vw, 72px) 72px;
+}
+.toc {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+  padding: 18px 0 18px 18px;
+  border-left: 1px solid var(--line);
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+.toc-title {
+  margin: 0 0 14px;
+  color: var(--bronze);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.toc a {
+  display: block;
+  margin: 0 0 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+.toc a:hover, .toc a.active { color: var(--oxblood); }
+.toc a.toc-major {
+  margin-top: 18px;
+  color: var(--blueblack);
+  font-weight: 800;
+}
+article {
+  min-width: 0;
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+}
+.lede {
+  margin: 0 0 28px;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.42);
+  border-left: 4px solid var(--bronze);
+  color: var(--blueblack);
+  font-size: clamp(1.08rem, 1.5vw, 1.2rem);
+}
+.chapter {
+  padding: clamp(24px, 4vw, 42px) 0;
+  border-top: 1px solid var(--line);
+}
+.chapter:first-of-type { border-top: 0; }
+h2 {
+  margin: 0 0 20px;
+  line-height: 1.22;
+  color: var(--ink);
+  font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+}
+h2 span {
+  background-image: linear-gradient(transparent 68%, rgba(165, 116, 63, 0.22) 68%);
+}
+.chapter p { margin: 0 0 16px; }
+ul, ol { padding-left: 1.35em; margin: 14px 0 20px; }
+li { margin: 6px 0; }
+blockquote {
+  margin: 18px 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--bronze);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--blueblack);
+}
+.formula {
+  margin: 16px 0;
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.48);
+  font-family: "Consolas", "Menlo", monospace;
+  overflow-x: auto;
+}
+.table-wrap { margin: 16px 0; overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  background: rgba(255, 255, 255, 0.5);
+}
+th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; }
+th { background: rgba(165, 116, 63, 0.14); text-align: left; }
+.note-box {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+}
+.gallery-block {
+  margin: 26px 0 0;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+}
+.gallery-block h2 {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 12px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.gallery-card {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.5);
+}
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+.gallery-card figcaption {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 8px 10px 10px;
+}
+.closing-band {
+  margin-top: 24px;
+  padding: 30px clamp(20px, 5vw, 72px) 48px;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.38);
+}
+.closing-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  gap: 36px;
+}
+.credits h2, .references h2 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+.credits p, .references li {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.references ul { margin: 0; padding-left: 1.2em; }
+@media (max-width: 960px) {
+  .hero-grid, .layout, .closing-inner { grid-template-columns: 1fr; }
+  .toc {
+    position: relative;
+    top: auto;
+    max-height: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 14px;
+    padding: 16px 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-title { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .toc { grid-template-columns: 1fr; }
+  .lede { padding: 18px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Philosophy Longform Archive</p>
+          <h1>philosophy-trends-report-20260519 (1)</h1>
+          <p class="hero-subtitle">Word 文档自动长文转换页（暖纸展陈）</p>
+          <div class="hero-meta" aria-label="文档元信息">
+            <span>来源文件：philosophy-trends-report-20260519 (1).docx</span>
+            <span>生成时间：2026-06-02 10:56</span>
+            <span>版式：暖纸展陈 + 固定目录</span>
+          </div>
+        </div>
+        <div class="portrait-grid" aria-label="哲学家肖像">
+          <figure class="portrait-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bust%20of%20the%20Philosopher%20Plato.jpg?width=900" alt="柏拉图肖像">
+            <figcaption><strong>柏拉图</strong>理念与爱欲</figcaption>
+          </figure>
+          <figure class="portrait-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bust%20of%20Aristotle.jpg?width=900" alt="亚里士多德肖像">
+            <figcaption><strong>亚里士多德</strong>实体与因果</figcaption>
+          </figure>
+          <figure class="portrait-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Frans%20Hals%2C%20Portrait%20of%20Ren%C3%A9%20Descartes.jpg?width=900" alt="笛卡尔肖像">
+            <figcaption><strong>笛卡尔</strong>主体与方法</figcaption>
+          </figure>
+          <figure class="portrait-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Immanuel%20Kant%20%28portrait%29.jpg?width=900" alt="康德肖像">
+            <figcaption><strong>康德</strong>先验与界限</figcaption>
+          </figure>
+        </div>
+      </div>
+    </header>
+    <div class="layout">
+      <nav class="toc" aria-label="目录导航">
+        <p class="toc-title">目录</p>
+<a class="toc-major" href="#s1-方法说明">方法说明</a>
+        <a class="toc-major" href="#s2-top-10-论文与摘要转述">Top 10 论文与摘要转述</a>
+        <a href="#s3-1-the-absolute-from-ground-to-limit-hegel-and-deleuze">#1 The Absolute from Ground to Limit: Hegel and Deleuze</a>
+        <a href="#s4-2-process-essentialism-in-medicine">#2 Process essentialism in medicine</a>
+        <a href="#s5-3-the-technologization-of-transcendental-illusion">#3 The Technologization of Transcendental Illusion</a>
+        <a href="#s6-4-the-logical-genesis-of-evoluism">#4 The Logical Genesis of Evoluism</a>
+        <a href="#s7-5-xenoepistemics-toward-a-general-theory-of-non-human-knowledge">#5 Xenoepistemics: Toward a General Theory of Non-Human Knowledge</a>
+        <a href="#s8-6-cognitive-succession-ontology-a-layered-framework-for-the-temporality-of-identity-and-the-emergence-of-consciousness">#6 Cognitive Succession Ontology: A Layered Framework for the Temporality of Identity and the Emergence of Consciousness</a>
+        <a href="#s9-7-ai-and-ideologies-the-case-of-academic-writing">#7 AI and Ideologies: The Case of Academic Writing</a>
+        <a href="#s10-8-perspective-continuity-and-reconstruction-in-philip-k-dick-s-the-man-in-the-high-castle">#8 Perspective, Continuity, and Reconstruction in Philip K. Dick’s The Man in the High Castle</a>
+        <a href="#s11-9-preconscious-sovereignty-the-genesis-of-immanent-self-reference-in-pre-intentional-subjectivity">#9 Preconscious Sovereignty: The Genesis of Immanent Self-Reference in Pre-Intentional Subjectivity</a>
+        <a href="#s12-10-epistemic-infrastructure-assurance-evaluating-research-quality-through-multi-dimensional-philosophical-metrics">#10 Epistemic Infrastructure Assurance: Evaluating Research Quality Through Multi-Dimensional Philosophical Metrics</a>
+        <a class="toc-major" href="#s13-走势分析-哲学研究正在往哪里走">走势分析：哲学研究正在往哪里走</a>
+        <a class="toc-major" href="#s14-结论">结论</a>
+        <a class="toc-major" href="#s15-主要来源">主要来源</a>
+        <a class="toc-major" href="#s16-1-the-absolute-from-ground-to-limit-hegel-and-deleuze-https-philpapers-org-rec-hartaf-24">1. The Absolute from Ground to Limit: Hegel and Deleuze - https://philpapers.org/rec/HARTAF-24</a>
+        <a class="toc-major" href="#s17-2-process-essentialism-in-medicine-https-philpapers-org-rec-boepei">2. Process essentialism in medicine - https://philpapers.org/rec/BOEPEI</a>
+        <a class="toc-major" href="#s18-3-the-technologization-of-transcendental-illusion-https-philpapers-org-rec-hirtto-5">3. The Technologization of Transcendental Illusion - https://philpapers.org/rec/HIRTTO-5</a>
+        <a class="toc-major" href="#s19-4-the-logical-genesis-of-evoluism-https-philpapers-org-rec-hirtgl-12">4. The Logical Genesis of Evoluism - https://philpapers.org/rec/HIRTGL-12</a>
+        <a class="toc-major" href="#s20-5-xenoepistemics-toward-a-general-theory-of-non-human-knowledge-https-www-preprints-org-manuscript-202605-0165-v1">5. Xenoepistemics: Toward a General Theory of Non-Human Knowledge - https://www.preprints.org/manuscript/202605.0165/v1</a>
+        <a class="toc-major" href="#s21-6-cognitive-succession-ontology-a-layered-framework-for-the-temporality-of-identity-and-the-emergence-of-consciousness-https-philpapers-org-rec-checso-4">6. Cognitive Succession Ontology: A Layered Framework for the Temporality of Identity and the Emergence of Consciousness - https://philpapers.org/rec/CHECSO-4</a>
+        <a class="toc-major" href="#s22-7-ai-and-ideologies-the-case-of-academic-writing-https-philpapers-org-rec-mayaia-9">7. AI and Ideologies: The Case of Academic Writing - https://philpapers.org/rec/MAYAIA-9</a>
+        <a class="toc-major" href="#s23-8-perspective-continuity-and-reconstruction-in-philip-k-dick-s-the-man-in-the-high-castle-https-philpapers-org-rec-patace-2">8. Perspective, Continuity, and Reconstruction in Philip K. Dick’s The Man in the High Castle - https://philpapers.org/rec/PATACE-2</a>
+        <a class="toc-major" href="#s24-9-preconscious-sovereignty-the-genesis-of-immanent-self-reference-in-pre-intentional-subjectivity-https-philpapers-org-rec-hirpst-4">9. Preconscious Sovereignty: The Genesis of Immanent Self-Reference in Pre-Intentional Subjectivity - https://philpapers.org/rec/HIRPST-4</a>
+        <a class="toc-major" href="#s25-10-epistemic-infrastructure-assurance-evaluating-research-quality-through-multi-dimensional-philosophical-metrics-https-philpapers-org-rec-okpeia">10. Epistemic Infrastructure Assurance: Evaluating Research Quality Through Multi-Dimensional Philosophical Metrics - https://philpapers.org/rec/OKPEIA</a>
+      </nav>
+      <article>
+        <section class="chapter">
+        <p class="lede">最近一月哲学论文热度观察报告</p>
+        <p>Google Scholar + PhilPapers/PhilArchive 检索尝试 | 2026-05-19</p>
+        </section>
+        <section class="chapter">
+        <h2 id="s1-方法说明"><span>方法说明</span></h2>
+        <p>时间口径：2026-04-19 至 2026-05-19。目标是寻找最近一月较受关注的哲学论文或预印本。</p>
+        <p>Google Scholar：已在登录 Chrome 中访问并检索，但页面返回自动化查询拦截，无法稳定读取 Scholar 排名。为避免违反网站限制，未继续强行抓取。</p>
+        <p>替代办法：使用 PhilPapers/PhilArchive 的最近新增、可见下载数、期刊/预印本页面、DOI/网页检索结果和主题热度综合排序。因此，“最火”不是官方榜单，而是近月公开可见热度估计。</p>
+        </section>
+        <section class="chapter">
+        <h2 id="s2-top-10-论文与摘要转述"><span>Top 10 论文与摘要转述</span></h2>
+        </section>
+        <section class="chapter">
+        <h3 id="s3-1-the-absolute-from-ground-to-limit-hegel-and-deleuze"><span>#1 The Absolute from Ground to Limit: Hegel and Deleuze</span></h3>
+        <p>作者：K. B. Harris</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-04, visible download count about 40。近一月新增且 PhilPapers/PhilArchive 可见下载数最高的一组候选之一。</p>
+        <p>链接：https://philpapers.org/rec/HARTAF-24</p>
+        <p>摘要转述：论文把黑格尔的“根据”和德勒兹的“极限”放在同一个问题场中比较：绝对者不是一个静止终点，而是在生成、限制和自我差异化中显现。作者关心的是形而上学如何在不退回传统实体论的情况下保留系统性。</p>
+        <p>简评：这篇代表了近来欧陆形而上学的一个走向：重新处理绝对、生成、限制等大词，但不再用经典体系哲学的封闭方式，而是借助差异、过程和边界条件来重建问题。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s4-2-process-essentialism-in-medicine"><span>#2 Process essentialism in medicine</span></h3>
+        <p>作者：Brandon Boesch</p>
+        <p>来源与热度：Synthese / PhilPapers, online 2026-05-05。出自 Synthese，近月被 PhilPapers 收录；医学形而上学与科学哲学交叉度高。</p>
+        <p>链接：https://philpapers.org/rec/BOEPEI</p>
+        <p>摘要转述：论文主张医学中的“本质”不应只被理解为固定属性，而应被理解为过程性结构。疾病、健康、功能和治疗对象往往随时间展开，因此医学分类需要同时解释稳定性与变化。</p>
+        <p>简评：它显示科学哲学正在从抽象分类争论走向应用场景：医学、生命过程和实践决策正在推动新的本质主义版本。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s5-3-the-technologization-of-transcendental-illusion"><span>#3 The Technologization of Transcendental Illusion</span></h3>
+        <p>作者：Albert N. M. I. O. E. O. O. A. A. A. A. A. O. Hirschman</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-08, visible download count about 32。AI与康德式先验幻相结合，下载数靠前，主题紧贴技术哲学。</p>
+        <p>链接：https://philpapers.org/rec/HIRTTO-5</p>
+        <p>摘要转述：论文把大型语言模型的“幻觉”理解为一种技术化的先验幻相：错误并非偶然故障，而与系统生成意义和模拟知识的方式有关。文章用康德资源解释为什么技术系统会制造看似合理的知识外观。</p>
+        <p>简评：这类研究把 AI 错误从工程问题提升为认识论问题，是当前哲学与技术研究最活跃的接口之一。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s6-4-the-logical-genesis-of-evoluism"><span>#4 The Logical Genesis of Evoluism</span></h3>
+        <p>作者：Albert N. M. I. O. E. O. O. A. A. A. A. A. O. Hirschman</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-11, visible download count about 30。近月新增且下载数较高，属于体系性形而上学尝试。</p>
+        <p>链接：https://philpapers.org/rec/HIRTGL-12</p>
+        <p>摘要转述：论文提出一种名为“Evoluism”的逻辑发生论框架，试图说明存在、变化和发展如何从更基础的逻辑结构中生成。文章强调演化不是外在事实，而可能是思想和存在结构内部的展开方式。</p>
+        <p>简评：它反映出一种复兴趋势：年轻或独立研究者在 PhilArchive 上发布宏大体系论尝试，把逻辑、过程和形而上学重新连起来。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s7-5-xenoepistemics-toward-a-general-theory-of-non-human-knowledge"><span>#5 Xenoepistemics: Toward a General Theory of Non-Human Knowledge</span></h3>
+        <p>作者：Jordi Vallverd&#250;</p>
+        <p>来源与热度：Preprints.org / PhilPapers, online 2026-05-05。非人类知识、AI与动物/机器认知交叉，主题热度高。</p>
+        <p>链接：https://www.preprints.org/manuscript/202605.0165/v1</p>
+        <p>摘要转述：论文提出“异类认识论”：知识不应只以人类主体为标准，还应纳入动物、机器、集体系统和可能的外星智能。它试图扩展认识论的主体范围，并讨论非人类系统如何感知、表征、学习和校正错误。</p>
+        <p>简评：这是 AI 时代认识论的代表方向：问题不再只是“人如何知道”，而是“哪些系统能够以何种方式知道”。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s8-6-cognitive-succession-ontology-a-layered-framework-for-the-temporality-of-identity-and-the-emergence-of-consciousness"><span>#6 Cognitive Succession Ontology: A Layered Framework for the Temporality of Identity and the Emergence of Consciousness</span></h3>
+        <p>作者：Mingxiang Chen</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-07, visible download count about 21。意识、身份和时间性的交叉题目，在近月 PhilPapers 候选中较受关注。</p>
+        <p>链接：https://philpapers.org/rec/CHECSO-4</p>
+        <p>摘要转述：论文用“认知继承”的层级模型解释身份和意识如何随时间形成。它不把自我看成单一实体，而看作多个认知层次持续接续、整合和重组的结果。</p>
+        <p>简评：意识哲学正在吸收更多动态系统和层级模型语言，传统“同一性”问题也越来越被时间结构和认知过程重写。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s9-7-ai-and-ideologies-the-case-of-academic-writing"><span>#7 AI and Ideologies: The Case of Academic Writing</span></h3>
+        <p>作者：Josh May</p>
+        <p>来源与热度：PhilPapers, added 2026-05-10, visible download count about 19。AI写作、学术规范和意识形态批判交汇，现实讨论度很高。</p>
+        <p>链接：https://philpapers.org/rec/MAYAIA-9</p>
+        <p>摘要转述：论文讨论 AI 写作工具如何改变学术写作实践，并指出这些工具并非中性：它们会嵌入关于效率、原创性、劳动、评价和知识生产的意识形态。文章关注的不只是作弊问题，而是学术制度如何被技术重塑。</p>
+        <p>简评：这类论文说明 AI伦理正从抽象原则转向具体制度：课堂、期刊、同行评议和学术劳动正在成为核心现场。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s10-8-perspective-continuity-and-reconstruction-in-philip-k-dick-s-the-man-in-the-high-castle"><span>#8 Perspective, Continuity, and Reconstruction in Philip K. Dick’s The Man in the High Castle</span></h3>
+        <p>作者：Ryan Paton</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-07, visible download count about 17。文学哲学、现实建构和视角问题的跨学科条目，下载数居中靠前。</p>
+        <p>链接：https://philpapers.org/rec/PATACE-2</p>
+        <p>摘要转述：论文借菲利普&#183;迪克的小说讨论视角、连续性和现实重构。它关心的是，当历史或世界图景被改写时，主体如何维持理解世界的连续性，以及叙事如何暴露现实感的脆弱性。</p>
+        <p>简评：哲学与文学研究仍是重要支流，尤其当虚构世界能帮助分析现实、身份和历史可能性时。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s11-9-preconscious-sovereignty-the-genesis-of-immanent-self-reference-in-pre-intentional-subjectivity"><span>#9 Preconscious Sovereignty: The Genesis of Immanent Self-Reference in Pre-Intentional Subjectivity</span></h3>
+        <p>作者：Albert N. M. I. O. E. O. O. A. A. A. A. A. O. Hirschman</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-10, visible download count about 16。主体性、意向性之前结构和自我指涉问题，属于近期现象学/形而上学热区。</p>
+        <p>链接：https://philpapers.org/rec/HIRPST-4</p>
+        <p>摘要转述：论文研究意向性形成之前的主体结构，提出自我指涉可能先于明确意识和对象指向。它试图说明主体并不是从清晰反思开始，而是在前意识层面已经具有某种内在组织。</p>
+        <p>简评：这体现了主体性研究的走势：不再只分析显意识经验，而是追问经验之前的生成条件。</p>
+        </section>
+        <section class="chapter">
+        <h3 id="s12-10-epistemic-infrastructure-assurance-evaluating-research-quality-through-multi-dimensional-philosophical-metrics"><span>#10 Epistemic Infrastructure Assurance: Evaluating Research Quality Through Multi-Dimensional Philosophical Metrics</span></h3>
+        <p>作者：J. A. Okpala</p>
+        <p>来源与热度：PhilPapers / PhilArchive, added 2026-05-05, visible download count about 14。研究质量评价、知识基础设施和多维指标，回应当前学术评价危机。</p>
+        <p>链接：https://philpapers.org/rec/OKPEIA</p>
+        <p>摘要转述：论文提出一种评估研究质量的哲学指标框架，强调研究不只应按引用或产量衡量，还要看概念清晰度、方法透明度、可争辩性、社会嵌入和知识基础设施可靠性。</p>
+        <p>简评：它指向哲学研究的自我反思：在 AI写作、开放预印本和指标治理时代，哲学也必须重新定义什么算作“好研究”。</p>
+        </section>
+        <section class="chapter">
+        <h2 id="s13-走势分析-哲学研究正在往哪里走"><span>走势分析：哲学研究正在往哪里走</span></h2>
+        <p>第一，AI 正在从伦理学议题扩展为认识论、学术制度和主体性问题。过去几年 AI伦理多集中于偏见、隐私和责任；近月候选显示，研究者更关注 AI 如何改变“知道”“写作”“评价”和“错误”的结构。</p>
+        <p>第二，认识论正在去人类中心化。Xenoepistemics 一类研究把动物、机器、集体智能纳入知识主体范围，说明传统以个体人类信念为中心的模型正在被扩展。</p>
+        <p>第三，形而上学出现“过程化”和“生成化”趋势。医学本质主义、黑格尔/德勒兹、主体性发生论等研究都不满足于静态实体，而强调时间、层次、限制和生成条件。</p>
+        <p>第四，哲学与制度问题结合更紧。AI写作和研究质量评价表明，哲学不只是讨论抽象真理，也在反思大学、期刊、预印本、指标和知识基础设施如何塑造研究。</p>
+        <p>第五，文学、技术和社会批判继续交叉。科幻文本、AI幻觉、意识形态和世界重构成为哲学分析材料，显示哲学论文越来越依赖跨学科对象来捕捉当代经验。</p>
+        </section>
+        <section class="chapter">
+        <h2 id="s14-结论"><span>结论</span></h2>
+        <p>最近一月的热门哲学研究并没有只集中在传统分支内部，而是围绕 AI、非人类认知、过程形而上学、主体发生和学术制度反思形成若干交叉热点。未来半年，哲学研究很可能继续把 AI 从“技术对象”推进为“认识条件”和“制度条件”来讨论；同时，非人类知识、医学/生命过程、本体论生成模型也会继续升温。</p>
+        </section>
+        <section class="chapter">
+        <h2 id="s15-主要来源"><span>主要来源</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s16-1-the-absolute-from-ground-to-limit-hegel-and-deleuze-https-philpapers-org-rec-hartaf-24"><span>1. The Absolute from Ground to Limit: Hegel and Deleuze - https://philpapers.org/rec/HARTAF-24</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s17-2-process-essentialism-in-medicine-https-philpapers-org-rec-boepei"><span>2. Process essentialism in medicine - https://philpapers.org/rec/BOEPEI</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s18-3-the-technologization-of-transcendental-illusion-https-philpapers-org-rec-hirtto-5"><span>3. The Technologization of Transcendental Illusion - https://philpapers.org/rec/HIRTTO-5</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s19-4-the-logical-genesis-of-evoluism-https-philpapers-org-rec-hirtgl-12"><span>4. The Logical Genesis of Evoluism - https://philpapers.org/rec/HIRTGL-12</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s20-5-xenoepistemics-toward-a-general-theory-of-non-human-knowledge-https-www-preprints-org-manuscript-202605-0165-v1"><span>5. Xenoepistemics: Toward a General Theory of Non-Human Knowledge - https://www.preprints.org/manuscript/202605.0165/v1</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s21-6-cognitive-succession-ontology-a-layered-framework-for-the-temporality-of-identity-and-the-emergence-of-consciousness-https-philpapers-org-rec-checso-4"><span>6. Cognitive Succession Ontology: A Layered Framework for the Temporality of Identity and the Emergence of Consciousness - https://philpapers.org/rec/CHECSO-4</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s22-7-ai-and-ideologies-the-case-of-academic-writing-https-philpapers-org-rec-mayaia-9"><span>7. AI and Ideologies: The Case of Academic Writing - https://philpapers.org/rec/MAYAIA-9</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s23-8-perspective-continuity-and-reconstruction-in-philip-k-dick-s-the-man-in-the-high-castle-https-philpapers-org-rec-patace-2"><span>8. Perspective, Continuity, and Reconstruction in Philip K. Dick’s The Man in the High Castle - https://philpapers.org/rec/PATACE-2</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s24-9-preconscious-sovereignty-the-genesis-of-immanent-self-reference-in-pre-intentional-subjectivity-https-philpapers-org-rec-hirpst-4"><span>9. Preconscious Sovereignty: The Genesis of Immanent Self-Reference in Pre-Intentional Subjectivity - https://philpapers.org/rec/HIRPST-4</span></h2>
+        </section>
+        <section class="chapter">
+        <h2 id="s25-10-epistemic-infrastructure-assurance-evaluating-research-quality-through-multi-dimensional-philosophical-metrics-https-philpapers-org-rec-okpeia"><span>10. Epistemic Infrastructure Assurance: Evaluating Research Quality Through Multi-Dimensional Philosophical Metrics - https://philpapers.org/rec/OKPEIA</span></h2>
+        <p>PhilPapers recent page: https://philpapers.org/recent</p>
+        <div class="formula">Google Scholar search attempted: https://scholar.google.com/scholar?q=philosophy+artificial+intelligence+ethics&amp;as_ylo=2026&amp;hl=en</div>
+        </section>
+<section class="gallery-block" aria-label="本地图片画廊">
+  <h2>本地图片画廊</h2>
+  <div class="gallery-grid">
+    <figure class="gallery-card"><img src="pic/german-idealists-starry-night.png" alt="german-idealists-starry-night"><figcaption>german-idealists-starry-night</figcaption></figure>
+    <figure class="gallery-card"><img src="pic/Hussel-Heidegger-Sarte-Merleau-ponty.jfif" alt="Hussel-Heidegger-Sarte-Merleau-ponty"><figcaption>Hussel-Heidegger-Sarte-Merleau-ponty</figcaption></figure>
+    <figure class="gallery-card"><img src="pic/kant-fichte-schelling-hegel.jpg" alt="kant-fichte-schelling-hegel"><figcaption>kant-fichte-schelling-hegel</figcaption></figure>
+    <figure class="gallery-card"><img src="pic/phenomenology-existentialism-starry-night.png" alt="phenomenology-existentialism-starry-night"><figcaption>phenomenology-existentialism-starry-night</figcaption></figure>
+  </div>
+</section>
+      </article>
+    </div>
+    <footer class="closing-band">
+      <div class="closing-inner">
+        <section class="credits">
+          <h2>说明</h2>
+          <p>本页由自动化流程生成，保留固定目录、长文排版与响应式布局。若源文档提取能力受限，会在正文中明确标注。</p>
+        </section>
+        <section class="references">
+          <h2>参考与链接</h2>
+          <ul>
+            <li>源文件：philosophy-trends-report-20260519 (1).docx</li>
+            <li>自动提取：段落、标题、列表、表格与公式（近似）</li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const links = Array.from(document.querySelectorAll('.toc a'));
+    const headings = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0.01 });
+    headings.forEach(heading => observer.observe(heading));
+  </script>
+</body>
+</html>
