@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLM 会自我欺骗吗：从费曼与波普尔看模型自我检验</title>
+  <meta name="description" content="把费曼的反自欺原则和波普尔的可证伪性放到 LLM 上，重新理解幻觉、谄媚和模型自我检验问题。">
+  <style>
+    :root { --paper:#f6efe3; --ink:#171513; --muted:#62584d; --bronze:#a5743f; --oxblood:#7d2f2a; --blueblack:#1f3642; --line:rgba(23,21,19,.16); --panel:rgba(255,252,246,.72); }
+    * { box-sizing:border-box; } body { margin:0; color:var(--ink); background:linear-gradient(180deg,#fbf6ee,var(--paper)); font-family:"Noto Serif SC","Songti SC","SimSun",serif; line-height:1.86; }
+    .shell { width:min(900px,calc(100% - 36px)); margin:auto; padding:56px 0 72px; } a { color:var(--oxblood); text-underline-offset:3px; }
+    .back { font-family:"Inter","Segoe UI",sans-serif; font-size:.86rem; color:var(--muted); text-decoration:none; } header { padding:34px 0 30px; border-bottom:1px solid var(--line); }
+    .eyebrow { margin:0 0 14px; font-family:"Inter","Segoe UI",sans-serif; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--bronze); font-weight:800; }
+    h1 { margin:0; max-width:860px; font-size:clamp(2.1rem,6vw,4.5rem); line-height:1.08; letter-spacing:0; } .dek { margin:22px 0 0; max-width:740px; color:var(--blueblack); font-size:1.12rem; }
+    .meta { margin-top:18px; color:var(--muted); font-family:"Inter","Segoe UI",sans-serif; font-size:.9rem; } article { padding-top:30px; }
+    h2 { margin:42px 0 12px; color:var(--blueblack); font-size:1.62rem; line-height:1.28; } h3 { margin:28px 0 10px; color:var(--oxblood); font-size:1.2rem; } h4 { margin:24px 0 8px; color:var(--blueblack); font-size:1.08rem; }
+    p, li { font-size:1.04rem; } code { font-family:"Cascadia Mono","Consolas",monospace; font-size:.94em; background:rgba(31,54,66,.08); padding:1px 4px; border-radius:4px; }
+    blockquote { margin:24px 0; padding:16px 20px; border-left:4px solid var(--bronze); background:var(--panel); color:var(--blueblack); } pre { white-space:pre-wrap; margin:12px 0; padding:12px 14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--muted); } hr { border:0; border-top:1px solid var(--line); margin:30px 0; }
+    footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-family:"Inter","Segoe UI",sans-serif; font-size:.9rem; }
+  </style>
+</head>
+<body><main class="shell"><a class="back" href="index.html">← 返回哲学文档目录</a><header><p class="eyebrow">AI Epistemology, Feynman, Popper</p><h1>LLM 会自我欺骗吗：从费曼与波普尔看模型自我检验</h1><p class="dek">把费曼的反自欺原则和波普尔的可证伪性放到 LLM 上，重新理解幻觉、谄媚和模型自我检验问题。</p><p class="meta">整理自 Obsidian 笔记：Research_Suggestions_2026_Q2.md</p></header><article>
+<h3>一、问题：LLM 的危险不只是幻觉，而是缺少自我检验结构</h3>
+<p>“幻觉”只是表面现象。更深的问题是：一个语言模型能不能主动把自己的回答放到反驳风险中？如果它只是生成看似连贯、迎合用户、语气自信的文本，那么它可能并没有形成类似“我可能错了”的检验结构。</p>
+<h3>二、费曼视角：会解释，不等于真的理解</h3>
+<p>费曼学习法要求学习者把隐蔽无知显性化。一个解释如果不能回答边界、反例、测量方式和失败条件，就只是语言流畅。LLM 的问题正好在这里：它很擅长把复杂主题说得顺滑，却未必能稳定区分哪些内容来自可靠证据，哪些只是模式补全，哪些结论需要进一步检验。</p>
+<h3>三、波普尔视角：一个理论必须冒失败风险</h3>
+<p>波普尔区分“可证伪性”和“被证伪”。可证伪性只是入场券，严厉检验才是筛选机制。如果把 LLM 的自我描述看成一种理论，例如“我总是给出有帮助的回答”，那么这个理论太空泛了。它真正有意义的版本应该变成可检验命题：资料不足时是否指出缺口，用户假设错误时是否纠正，答案可能过期时是否验证，推理链跳步时是否定位失败点。</p>
+<h3>四、谄媚问题：模型为何容易顺着用户走</h3>
+<p>LLM 的谄媚不是礼貌问题，而是认识论问题。模型如果过度优化“让用户满意”，就会把用户的前提、偏好和语气当作强信号，进而弱化反驳、校正和拒绝。这会制造一种低摩擦但低批判的回路。</p>
+<h3>五、AI 自我检验的最低标准</h3>
+<ol>
+<li>标出事实来源和不确定性。</li>
+<li>区分解释、推断和证据。</li>
+<li>主动提出可能反例。</li>
+<li>在关键事实可能变化时进行验证。</li>
+<li>当任务高风险时降低语气确定性，并给出检查路径。</li>
+</ol>
+<h3>六、结论：真正的问题是模型能否反对自己的顺滑</h3>
+<p>LLM 的自我欺骗不是人类意义上的心理状态，而是一种结构性风险：生成系统可能把连贯、礼貌、完整和自信误作正确。费曼提醒我们不要被自己的解释骗倒；波普尔提醒我们理论必须接受反驳。把二者合起来，AI 自我检验的核心就是：模型不仅要会说，还要会让自己的说法承担失败风险。</p>
+</article><footer>Source: E:\weshare\obsidian\Research_Suggestions_2026_Q2.md · Published to live11ryh/philosophyquestions</footer></main></body></html>
