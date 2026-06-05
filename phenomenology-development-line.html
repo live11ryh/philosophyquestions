@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>现象学发展线索图</title>
+  <style>
+    :root {
+      --paper: #edf7ff;
+      --mist: #d8ecfb;
+      --navy: #10243d;
+      --ink: #172337;
+      --muted: #6d7f91;
+      --line: rgba(16, 36, 61, 0.18);
+      --line-strong: rgba(16, 36, 61, 0.48);
+      --white: rgba(255, 255, 255, 0.78);
+      --gold: #b89245;
+      --green: #6c8b81;
+      --rose: #9c6f7a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #cfe4f5;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      gap: 34px;
+      justify-items: center;
+      padding: 34px 0;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", Arial, sans-serif;
+      background:
+        linear-gradient(180deg, #cfe4f5, #e5f2fb 44%, #c9dfef);
+    }
+
+    .poster {
+      position: relative;
+      width: min(92vw, 760px);
+      aspect-ratio: 6 / 9;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(244, 250, 255, 0.97), rgba(220, 239, 252, 0.94)),
+        radial-gradient(circle at 50% 16%, rgba(255, 255, 255, 0.92), transparent 36%);
+      border: 1px solid rgba(16, 36, 61, 0.16);
+      box-shadow: 0 28px 80px rgba(16, 36, 61, 0.2);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(16, 36, 61, 0.052) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 36, 61, 0.044) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.11) 46%, transparent 86%);
+      pointer-events: none;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16) 1px, transparent 1px, transparent 5px);
+      opacity: 0.3;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+    }
+
+    .window {
+      position: absolute;
+      right: -76px;
+      bottom: -36px;
+      width: 380px;
+      height: 520px;
+      opacity: 0.18;
+      border: 1px solid #31526d;
+      border-radius: 190px 190px 0 0;
+      pointer-events: none;
+    }
+
+    .window::before,
+    .window::after {
+      content: "";
+      position: absolute;
+      background: #31526d;
+      opacity: 0.45;
+    }
+
+    .window::before {
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+
+    .window::after {
+      left: 0;
+      right: 0;
+      top: 46%;
+      height: 1px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 38px 44px 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .rule {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    h1 {
+      margin: 17px 0 5px;
+      color: var(--navy);
+      font-size: clamp(29px, 5vw, 46px);
+      line-height: 1.08;
+      font-family: "SimSun", "Songti SC", "Noto Serif SC", serif;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      color: #385069;
+      font-size: 15px;
+      line-height: 1.4;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .tag {
+      border: 1px solid rgba(16, 36, 61, 0.2);
+      color: #45586c;
+      padding: 5px 8px;
+      font-size: 10px;
+      background: rgba(255, 255, 255, 0.48);
+    }
+
+    .flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 20px;
+      min-height: 0;
+    }
+
+    .axis {
+      position: relative;
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      justify-items: center;
+    }
+
+    .axis::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      bottom: 28px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--line), var(--line-strong), var(--gold));
+    }
+
+    .node {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      align-self: start;
+      margin-top: 5px;
+      border: 1px solid rgba(16, 36, 61, 0.33);
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .node.final {
+      border-color: rgba(184, 146, 69, 0.76);
+      box-shadow: inset 0 0 0 3px rgba(184, 146, 69, 0.13);
+    }
+
+    .stages {
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      gap: 9px;
+      min-height: 0;
+    }
+
+    .stage {
+      position: relative;
+      padding: 10px 14px 10px 16px;
+      border-left: 2px solid rgba(16, 36, 61, 0.34);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.34));
+      backdrop-filter: blur(2px);
+      min-height: 0;
+    }
+
+    .stage::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 31px;
+      width: 20px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .stage.final {
+      border-left-color: var(--gold);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.42));
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .name {
+      color: var(--navy);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .de {
+      color: #51667b;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 1.34;
+    }
+
+    .question {
+      margin-top: 6px;
+      color: #16263a;
+      font-size: 13px;
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .keywords {
+      margin-top: 5px;
+      color: #40566c;
+      font-size: 11px;
+      line-height: 1.38;
+    }
+
+    .transition {
+      margin-top: 6px;
+      padding-top: 5px;
+      border-top: 1px solid rgba(16, 36, 61, 0.12);
+      color: #6b7886;
+      font-size: 10px;
+      line-height: 1.34;
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1.14fr 1fr;
+      gap: 18px;
+      align-items: end;
+      color: #43576c;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .conclusion {
+      padding: 12px 15px;
+      border-top: 1px solid rgba(184, 146, 69, 0.68);
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .footnote {
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .logic-chain {
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      gap: 10px;
+      align-content: stretch;
+    }
+
+    .problem-map {
+      display: none;
+    }
+
+    .logic-link {
+      display: grid;
+      grid-template-columns: 1fr 64px 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .thinker-box,
+    .answer-box {
+      min-height: 86px;
+      padding: 10px 12px;
+      border: 1px solid rgba(16, 36, 61, 0.18);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .thinker-box strong,
+    .answer-box strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .thinker-box span,
+    .answer-box span {
+      display: block;
+      color: #51667b;
+      font-size: 10.5px;
+      line-height: 1.38;
+    }
+
+    .answer-box {
+      border-left: 2px solid rgba(184, 146, 69, 0.58);
+    }
+
+    .link-arrow {
+      display: grid;
+      gap: 5px;
+      justify-items: center;
+      color: #617589;
+      font-size: 9px;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .link-arrow .arrow {
+      width: 100%;
+      height: 1px;
+      background: var(--line-strong);
+      position: relative;
+    }
+
+    .link-arrow .arrow::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -4px;
+      border-left: 7px solid var(--line-strong);
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      align-content: center;
+    }
+
+    .branch {
+      min-height: 168px;
+      padding: 15px 15px 14px;
+      border: 1px solid rgba(16, 36, 61, 0.2);
+      background: rgba(255, 255, 255, 0.7);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 8px;
+    }
+
+    .branch .label {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .branch h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 17px;
+      line-height: 1.25;
+      font-family: "SimSun", "Songti SC", "Noto Serif SC", serif;
+    }
+
+    .branch p {
+      margin: 0;
+      color: #40566c;
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    .branch.accent {
+      border-top: 2px solid var(--gold);
+    }
+
+    .branch.green {
+      border-top: 2px solid var(--green);
+    }
+
+    .branch.rose {
+      border-top: 2px solid var(--rose);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 18px 0;
+      }
+
+      .content {
+        padding: 25px 23px 23px;
+        gap: 13px;
+      }
+
+      .flow {
+        grid-template-columns: 54px 1fr;
+        gap: 13px;
+      }
+
+      .node {
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+      }
+
+      .stage {
+        padding: 8px 9px 8px 11px;
+      }
+
+      .name {
+        font-size: 13px;
+      }
+
+      .question,
+      .conclusion {
+        font-size: 11px;
+      }
+
+      .keywords,
+      .transition,
+      .thinker-box span,
+      .answer-box span {
+        font-size: 9px;
+      }
+
+      .bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .footnote {
+        text-align: left;
+      }
+
+      .logic-link {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .link-arrow {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .link-arrow .arrow {
+        width: 1px;
+        height: 14px;
+        justify-self: center;
+      }
+
+      .link-arrow .arrow::after {
+        right: -4px;
+        top: 12px;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 7px solid var(--line-strong);
+        border-bottom: none;
+      }
+
+      .matrix {
+        gap: 9px;
+      }
+
+      .branch {
+        min-height: 130px;
+        padding: 10px;
+      }
+
+      .branch h2 {
+        font-size: 13px;
+      }
+
+      .branch p {
+        font-size: 9px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .poster {
+        width: 6in;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="现象学发展线索图第一页">
+    <div class="window" aria-hidden="true"></div>
+    <section class="content">
+      <header>
+        <div class="topline">
+          <span>Phenomenology Map</span>
+          <span class="rule"></span>
+          <span>Line of Questions</span>
+        </div>
+        <h1>现象学发展线索图</h1>
+        <div class="subtitle">Entwicklungslinie der Phänomenologie</div>
+        <div class="tags" aria-label="主题标签">
+          <span class="tag">INTENTIONALITÄT</span>
+          <span class="tag">EPOCHÉ</span>
+          <span class="tag">LEIB</span>
+          <span class="tag">SEIN</span>
+          <span class="tag">LEBENSWELT</span>
+        </div>
+      </header>
+
+      <section class="flow">
+        <div class="axis" aria-hidden="true">
+          <div class="node">B</div>
+          <div class="node">H</div>
+          <div class="node">S</div>
+          <div class="node">M</div>
+          <div class="node">G</div>
+          <div class="node final">L</div>
+        </div>
+
+        <div class="stages">
+          <article class="stage">
+            <div class="kicker"><span>01 / Brentano</span><span>Origin</span></div>
+            <div class="name">布伦塔诺 Brentano</div>
+            <div class="de">Psychologie vom empirischen Standpunkt</div>
+            <div class="question">意识为何总是关于某物？ / Warum ist Bewusstsein immer Bewusstsein von etwas?</div>
+            <div class="keywords">意向性 Intentionalität / 对象关联 Gegenstandsbezug</div>
+            <div class="transition">留下的问题：这种“指向”如何成为严格哲学方法？</div>
+          </article>
+
+          <article class="stage">
+            <div class="kicker"><span>02 / Husserl</span><span>Method</span></div>
+            <div class="name">胡塞尔 Husserl</div>
+            <div class="de">Zurück zu den Sachen selbst</div>
+            <div class="question">如何回到事情本身？ / Wie kommen wir zu den Sachen selbst?</div>
+            <div class="keywords">悬搁 Epoché / 还原 Reduktion / 意向结构 Noesis-Noema / 生活世界 Lebenswelt</div>
+            <div class="transition">留下的问题：现象是否只是意识构成，还是已在世界中展开？</div>
+          </article>
+
+          <article class="stage">
+            <div class="kicker"><span>03 / Heidegger</span><span>Being</span></div>
+            <div class="name">海德格尔 Heidegger</div>
+            <div class="de">Sein und Zeit</div>
+            <div class="question">存在如何显现？ / Wie zeigt sich Sein?</div>
+            <div class="keywords">此在 Dasein / 在世存在 In-der-Welt-sein / 时间性 Zeitlichkeit</div>
+            <div class="transition">留下的问题：如果我们总已在世界中，身体、他人与历史如何参与显现？</div>
+          </article>
+
+          <article class="stage">
+            <div class="kicker"><span>04 / Merleau-Ponty</span><span>Body</span></div>
+            <div class="name">梅洛-庞蒂 Merleau-Ponty</div>
+            <div class="de">Phénoménologie de la perception</div>
+            <div class="question">身体如何打开世界？ / Wie eröffnet der Leib die Welt?</div>
+            <div class="keywords">身体 Leib / 知觉 Wahrnehmung / 肉身 Chair / 交织 Chiasme</div>
+            <div class="transition">留下的问题：理解、文本、社会与他者是否也有现象学结构？</div>
+          </article>
+
+          <article class="stage">
+            <div class="kicker"><span>05 / Gadamer & Ricoeur</span><span>Meaning</span></div>
+            <div class="name">伽达默尔 / 利科 Gadamer / Ricoeur</div>
+            <div class="de">Hermeneutische Phänomenologie</div>
+            <div class="question">理解如何发生？ / Wie geschieht Verstehen?</div>
+            <div class="keywords">解释 Auslegung / 效果历史 Wirkungsgeschichte / 叙事 Narration</div>
+            <div class="transition">留下的问题：他者是否不是对象，而是对主体的伦理召唤？</div>
+          </article>
+
+          <article class="stage final">
+            <div class="kicker"><span>06 / Levinas</span><span>Other</span></div>
+            <div class="name">列维纳斯 Levinas</div>
+            <div class="de">Ethik als erste Philosophie</div>
+            <div class="question">他者如何打断主体？ / Wie unterbricht der Andere das Subjekt?</div>
+            <div class="keywords">面容 Antlitz / 他者 der Andere / 责任 Verantwortung</div>
+            <div class="transition">推进结果：现象学从意识方法扩展为存在、身体、解释与伦理的开放谱系。</div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="bottom">
+        <div class="conclusion">从“意识指向对象”到“世界、身体、他者共同显现”<br>Von Intentionalität zur Erscheinung von Welt, Leib und Anderem</div>
+        <div class="footnote">线索：每一阶段都在回答前一阶段暴露出的现象学困难。</div>
+      </footer>
+    </section>
+  </main>
+
+  <main class="poster" aria-label="现象学问题转换图第二页">
+    <div class="window" aria-hidden="true"></div>
+    <section class="content">
+      <header>
+        <div class="topline">
+          <span>Problem Genealogy</span>
+          <span class="rule"></span>
+          <span>Thinker to Thinker</span>
+        </div>
+        <h1>哲学家之间的问题递进链</h1>
+        <div class="subtitle">Wie erzeugt eine ungelöste Frage die nächste Antwort?</div>
+        <div class="tags" aria-label="主题标签">
+          <span class="tag">UNRESOLVED QUESTION</span>
+          <span class="tag">NEXT ANSWER</span>
+          <span class="tag">LOGISCHE FOLGE</span>
+          <span class="tag">GENEALOGIE</span>
+        </div>
+      </header>
+
+      <section class="logic-chain">
+        <div class="logic-link">
+          <div class="thinker-box">
+            <strong>布伦塔诺 Brentano</strong>
+            <span>他提出“意识总是关于某物”：Intentionalität。但这仍偏向描述心理学，尚未说明对象性如何成为严格哲学问题。</span>
+          </div>
+          <div class="link-arrow" aria-hidden="true">
+            <span>未竟问题</span>
+            <div class="arrow"></div>
+            <span>因此转向</span>
+          </div>
+          <div class="answer-box">
+            <strong>胡塞尔 Husserl</strong>
+            <span>要回答：对象如何按其给予方式显现？于是引入 Epoché、Reduktion、Noesis-Noema，把意向性变成方法。</span>
+          </div>
+        </div>
+
+        <div class="logic-link">
+          <div class="thinker-box">
+            <strong>胡塞尔 Husserl</strong>
+            <span>他把现象学奠基为意识与对象的相关性分析。但问题是：我们是否先有纯意识，还是总已经在世界之中？</span>
+          </div>
+          <div class="link-arrow" aria-hidden="true">
+            <span>断裂暴露</span>
+            <div class="arrow"></div>
+            <span>因此转向</span>
+          </div>
+          <div class="answer-box">
+            <strong>海德格尔 Heidegger</strong>
+            <span>要回答：存在如何在此在的在世存在中显现？焦点从认识对象转为 Dasein、Sein、Zeitlichkeit。</span>
+          </div>
+        </div>
+
+        <div class="logic-link">
+          <div class="thinker-box">
+            <strong>海德格尔 Heidegger</strong>
+            <span>他揭示人在世界中的存在结构。但这套分析仍较少说明：世界最初如何通过身体、知觉与行动被打开？</span>
+          </div>
+          <div class="link-arrow" aria-hidden="true">
+            <span>具体化要求</span>
+            <div class="arrow"></div>
+            <span>因此转向</span>
+          </div>
+          <div class="answer-box">
+            <strong>梅洛-庞蒂 Merleau-Ponty</strong>
+            <span>要回答：身体如何不是对象，而是世界显现的入口？于是以 Leib、Wahrnehmung、Chiasme 重写现象学。</span>
+          </div>
+        </div>
+
+        <div class="logic-link">
+          <div class="thinker-box">
+            <strong>梅洛-庞蒂 Merleau-Ponty</strong>
+            <span>他说明意义从身体与知觉中生成。但问题继续出现：历史、语言、文本和传统如何塑造我们的理解？</span>
+          </div>
+          <div class="link-arrow" aria-hidden="true">
+            <span>意义扩展</span>
+            <div class="arrow"></div>
+            <span>因此转向</span>
+          </div>
+          <div class="answer-box">
+            <strong>伽达默尔 / 利科 Gadamer / Ricoeur</strong>
+            <span>要回答：理解如何在语言、历史和解释中发生？现象学由“显现”进入 Auslegung、Wirkungsgeschichte、Narration。</span>
+          </div>
+        </div>
+
+        <div class="logic-link">
+          <div class="thinker-box">
+            <strong>解释学现象学</strong>
+            <span>它强调意义总在解释中生成。但如果他者只是被我解释的意义，他者是否又被纳入我的视域和掌控？</span>
+          </div>
+          <div class="link-arrow" aria-hidden="true">
+            <span>伦理挑战</span>
+            <div class="arrow"></div>
+            <span>因此转向</span>
+          </div>
+          <div class="answer-box">
+            <strong>列维纳斯 Levinas</strong>
+            <span>要回答：他者如何先于知识和解释而召唤我？Antlitz、der Andere、Verantwortung 使伦理成为第一哲学。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="problem-map">
+        <div class="problem-row">
+          <div class="problem-box">
+            <strong>意识结构问题</strong>
+            <span>意识不是封闭容器，而总是“关于某物”。</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="problem-box">
+            <strong>Intentionalität</strong>
+            <span>Bewusstsein ist immer Bewusstsein von etwas.</span>
+          </div>
+        </div>
+
+        <div class="problem-row">
+          <div class="problem-box">
+            <strong>方法问题</strong>
+            <span>怎样暂停自然态度，让对象按其给予方式显现？</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="problem-box">
+            <strong>Epoché / Reduktion</strong>
+            <span>Die Welt wird nicht verneint, sondern methodisch befragt.</span>
+          </div>
+        </div>
+
+        <div class="problem-row">
+          <div class="problem-box">
+            <strong>存在问题</strong>
+            <span>显现不是单纯意识内部事件，而发生在在世存在中。</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="problem-box">
+            <strong>In-der-Welt-sein</strong>
+            <span>Dasein versteht Sein aus Sorge, Zeitlichkeit und Welt.</span>
+          </div>
+        </div>
+
+        <div class="problem-row">
+          <div class="problem-box">
+            <strong>身体问题</strong>
+            <span>世界首先通过身体图式、知觉与行动被打开。</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="problem-box">
+            <strong>Leib / Wahrnehmung</strong>
+            <span>Der Leib ist kein Ding, sondern unser Zugang zur Welt.</span>
+          </div>
+        </div>
+
+        <div class="problem-row">
+          <div class="problem-box">
+            <strong>意义问题</strong>
+            <span>理解受历史、语言、文本与叙事结构调节。</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="problem-box">
+            <strong>Auslegung</strong>
+            <span>Sinn geschieht in Sprache, Geschichte und Interpretation.</span>
+          </div>
+        </div>
+
+        <div class="problem-row">
+          <div class="problem-box">
+            <strong>伦理问题</strong>
+            <span>他者不是我构成的对象，而是先于掌握的召唤。</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="problem-box">
+            <strong>Der Andere</strong>
+            <span>Das Antlitz ruft Verantwortung vor jeder Theorie hervor.</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bottom">
+        <div class="conclusion">逻辑不是人物排列，而是问题压力：前一位留下的困难，构成后一位出场的理由。</div>
+        <div class="footnote">主链：Intentionalität → Reduktion → In-der-Welt-sein → Leib → Auslegung → der Andere。</div>
+      </footer>
+    </section>
+  </main>
+
+  <main class="poster" aria-label="现象学分支谱系图第三页">
+    <div class="window" aria-hidden="true"></div>
+    <section class="content">
+      <header>
+        <div class="topline">
+          <span>Branch Map</span>
+          <span class="rule"></span>
+          <span>Phenomenological Genealogy</span>
+        </div>
+        <h1>现象学的分支谱系</h1>
+        <div class="subtitle">Verzweigungen der Phänomenologie</div>
+        <div class="tags" aria-label="主题标签">
+          <span class="tag">CLASSICAL</span>
+          <span class="tag">EXISTENTIAL</span>
+          <span class="tag">HERMENEUTIC</span>
+          <span class="tag">ETHICAL</span>
+        </div>
+      </header>
+
+      <section class="matrix">
+        <article class="branch accent">
+          <div class="label">01 / Classical Phenomenology</div>
+          <h2>经典现象学</h2>
+          <p>胡塞尔以意向性、悬搁、先验还原建立严格方法。核心问题是：对象如何在意识中被给予？关键词：Intentionalität, Epoché, Reduktion, Lebenswelt。</p>
+        </article>
+
+        <article class="branch green">
+          <div class="label">02 / Existential Ontology</div>
+          <h2>存在论转向</h2>
+          <p>海德格尔把“意识如何认识对象”转成“存在如何向此在显现”。重点从认识论转向在世存在、时间性、关怀与死亡。</p>
+        </article>
+
+        <article class="branch">
+          <div class="label">03 / Embodied Phenomenology</div>
+          <h2>身体与知觉</h2>
+          <p>梅洛-庞蒂强调身体不是对象，而是世界显现的条件。知觉、行动、空间感和他人经验都以身体为入口。</p>
+        </article>
+
+        <article class="branch rose">
+          <div class="label">04 / Hermeneutic Turn</div>
+          <h2>解释学现象学</h2>
+          <p>伽达默尔与利科把现象学推进到语言、历史、文本和叙事。理解不是复制事实，而是在传统和解释中发生。</p>
+        </article>
+
+        <article class="branch">
+          <div class="label">05 / Ethical Turn</div>
+          <h2>伦理现象学</h2>
+          <p>列维纳斯把他者置于中心：面容不是一个可被认识的对象，而是对我的责任召唤。伦理先于理论占有。</p>
+        </article>
+
+        <article class="branch accent">
+          <div class="label">06 / Social Lifeworld</div>
+          <h2>社会生活世界</h2>
+          <p>舒茨等人把生活世界扩展到社会行动、共同意义和日常经验。问题变成：共同世界如何被构成并维持？</p>
+        </article>
+      </section>
+
+      <footer class="bottom">
+        <div class="conclusion">一条主线，多重展开：方法论、存在论、身体论、解释学、伦理学与社会理论。</div>
+        <div class="footnote">以后内容较多时，可以继续按“多张竖版图稿”扩展。</div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
