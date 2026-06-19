@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>哲学知识库 Wiki Schema</title><meta name="description" content="从 Obsidian Philosophy 知识库转换而来的 Wiki、索引或资料页。"><style>:root{--paper:#f6efe3;--ink:#171513;--muted:#62584d;--bronze:#a5743f;--oxblood:#7d2f2a;--blueblack:#1f3642;--line:rgba(23,21,19,.16);--panel:rgba(255,252,246,.72)}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#fbf6ee,var(--paper));font-family:"Noto Serif SC","Songti SC","SimSun",serif;line-height:1.86}.shell{width:min(900px,calc(100% - 36px));margin:auto;padding:56px 0 72px}a{color:var(--oxblood);text-underline-offset:3px}.back{font-family:"Inter","Segoe UI",sans-serif;font-size:.86rem;color:var(--muted);text-decoration:none}header{padding:34px 0 30px;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 14px;font-family:"Inter","Segoe UI",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze);font-weight:800}h1{margin:0;max-width:860px;font-size:clamp(2rem,5vw,4rem);line-height:1.12;letter-spacing:0}.dek{margin:20px 0 0;max-width:740px;color:var(--blueblack);font-size:1.08rem}.meta{margin-top:16px;color:var(--muted);font-family:"Inter","Segoe UI",sans-serif;font-size:.9rem}article{padding-top:30px}h2{margin:42px 0 12px;color:var(--blueblack);font-size:1.56rem;line-height:1.28}h3{margin:28px 0 10px;color:var(--oxblood);font-size:1.22rem}h4,h5{margin:24px 0 8px;color:var(--blueblack);font-size:1.08rem}p,li{font-size:1.04rem}code{font-family:"Cascadia Mono","Consolas",monospace;font-size:.94em;background:rgba(31,54,66,.08);padding:1px 4px;border-radius:4px}blockquote{margin:24px 0;padding:16px 20px;border-left:4px solid var(--bronze);background:var(--panel);color:var(--blueblack)}pre{white-space:pre-wrap;margin:12px 0;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--muted);overflow:auto}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-family:"Inter","Segoe UI",sans-serif;font-size:.9rem}</style></head><body><main class="shell"><a class="back" href="index.html">← 返回哲学文档目录</a><header><p class="eyebrow">Philosophy Wiki / Notes</p><h1>哲学知识库 Wiki Schema</h1><p class="dek">从 Obsidian Philosophy 知识库转换而来的 Wiki、索引或资料页。</p><p class="meta">整理自 Obsidian：Philosophy\Wiki\_schema.md</p></header><article>
+<h2>哲学知识库 Wiki Schema</h2>
+<p>这是 Philosophy Wiki 的模式定义文件。它告诉 LLM 如何维护这个知识库。</p>
+<hr>
+<h3>核心理念</h3>
+<p><strong>Wiki 是持久性、累积性的知识工件。</strong> 当你添加新资料时，LLM 不是简单地索引它供以后检索，而是：</p>
+<ol>
+<li>读取并提取关键信息</li>
+<li>将其整合到现有 wiki 中</li>
+<li>更新相关概念/人物页面</li>
+<li>标注新数据与旧 claims 的矛盾</li>
+<li>加强或挑战正在演变的综合论点</li>
+</ol>
+<p><strong>你负责 sourcing、探索和提问。LLM 负责总结、交叉引用、归档和维护。</strong></p>
+<hr>
+<h3>目录结构</h3>
+<pre><code>Philosophy/Wiki/
+├── _schema.md      ← 本文件 - 模式定义
+├── index.md        ← 内容索引
+├── log.md          ← 操作日志
+├── concepts/       ← 概念页面（存在论、本体论、现象学等）
+├── entities/       ← 人物/作品页面（尼采、胡塞尔等）
+└── sources/        ← 源资料摘要（论文、书籍、clippings）
+Philosophy/raw/     ← 原始资料（PDF、图片、网页剪藏）</code></pre>
+<hr>
+<h3>页面格式规范</h3>
+<h4>概念页面 (concepts/)</h4>
+<pre><code>---
+uid: concept-name
+title: 概念名称
+tags: [concept, philosophy, ontology]
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+sources: [source-1, source-2]
+---
+
+# 概念名称
+
+## 定义
+概念的清晰定义...
+
+## 核心特征
+- 特征1
+- 特征 2
+
+## 与其他概念的关系
+- [[其他概念]]：关系描述
+
+## 主要争议
+争议点1...
+
+## 来源摘要
+&gt; 来源1 的关键摘录</code></pre>
+<h4>实体页面 (entities/)</h4>
+<pre><code>---
+uid: philosopher-name
+title: 哲学家姓名
+type: philosopher | work | movement
+born: YYYY
+died: YYYY (可选)
+school: 所属学派
+tags: [philosopher, modern-phenomenology]
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+sources: [source-1]
+---
+
+# 哲学家姓名
+
+## 生平简介
+...
+
+## 主要著作
+- 《著作名》 (年份) - 简短描述
+
+## 核心思想
+...
+
+## 重要概念
+- [[概念1]]
+- [[概念2]]
+
+## 批评与影响
+...</code></pre>
+<h4>源资料摘要 (sources/)</h4>
+<pre><code>---
+uid: source-ref
+title: 来源标题
+type: paper | book | article | clipping
+author: 作者
+year: YYYY
+url: URL (可选)
+tags: [phenomenology, husserl]
+created: YYYY-MM-DD
+ingested-by: LLM
+---
+
+# 来源标题
+
+## 基本信息
+- 作者：
+- 年份：
+- 类型：
+
+## 核心论点
+...
+
+## 关键摘录
+&gt;关键段落引用
+
+## 与其他来源的关系
+- 与 [[其他来源]] 的关系
+
+## 待探索问题
+- 问题1</code></pre>
+<hr>
+<h3>Ingest 流程（摄入新资料）</h3>
+<p>当用户要求摄入新资料时：</p>
+<ol>
+<li><strong>读取源资料</strong></li>
+</ol>
+<ul>
+<li>阅读原始文件/网页</li>
+<li>如有图片，先读文本再单独查看图片获取额外上下文</li>
+</ul>
+<ol>
+<li><strong>讨论关键要点</strong></li>
+</ol>
+<ul>
+<li>与用户讨论：这是什么？核心主张是什么？值得强调什么？</li>
+</ul>
+<ol>
+<li><strong>写入摘要页面</strong></li>
+</ol>
+<ul>
+<li>在 <code>sources/</code> 创建新页面</li>
+<p>-包含基本信息和关键摘录</p>
+</ul>
+<ol>
+<li><strong>更新 index.md</strong></li>
+</ol>
+<ul>
+<li>添加新页面的条目</li>
+<li>按类别（concepts/entities/sources）组织</li>
+</ul>
+<ol>
+<li><strong>更新相关页面</strong></li>
+</ol>
+<ul>
+<li>在相关概念页面添加链接</li>
+<li>在相关人物页面添加链接</li>
+<li>标注与其他页面的矛盾或补充关系</li>
+</ul>
+<ol>
+<li><strong>记录到 log.md</strong></li>
+</ol>
+<ul>
+<li>添加 ingest 条目到日志</li>
+</ul>
+<hr>
+<h3>Query 流程（回答问题）</h3>
+<p>当用户提问时：</p>
+<ol>
+<li><strong>读取 index.md</strong> 找到相关页面</li>
+<li><strong>阅读相关页面</strong> 获取上下文</li>
+<li><strong>综合回答</strong>，引用来源</li>
+<li><strong>评估是否值得归档</strong></li>
+</ol>
+<ul>
+<li>如果答案是新的分析/比较/洞见，问用户：&quot;要保存到 wiki吗？&quot;</li>
+<li>如果是，创建新页面并更新 index</li>
+</ul>
+<hr>
+<h3>Lint 流程（定期审查）</h3>
+<p>定期检查 wiki 健康状况：</p>
+<ol>
+<li><strong>检查矛盾</strong></li>
+</ol>
+<ul>
+<li>页面间的 claims 是否冲突？</li>
+</ul>
+<ol>
+<li><strong>检查陈旧</strong></li>
+<p>-是否有被新来源更新的 claims？</p>
+</ol>
+<ol>
+<li><strong>检查孤立</strong></li>
+</ol>
+<ul>
+<li>是否有无 inbound 链接的页面？</li>
+</ul>
+<ol>
+<li><strong>检查缺口</strong></li>
+</ol>
+<ul>
+<li>重要概念是否缺少独立页面？</li>
+</ul>
+<ol>
+<li><strong>建议新来源</strong></li>
+</ol>
+<ul>
+<li>哪些问题需要更多资料来填补？</li>
+</ul>
+<hr>
+<h3>index.md 格式</h3>
+<pre><code># 哲学知识库索引
+
+最后更新：YYYY-MM-DD
+
+## 概念 (concepts/)
+| 页面 | 简介 | 来源数 |
+|------|------|--------|
+| [[concepts/存在论]] | ... | 3 |
+
+## 人物与作品 (entities/)
+| 页面 | 类型 | 活跃期 |
+|------|------|--------|
+| [[entities/尼采]] | philosopher | 1844-1900 |
+
+## 源资料 (sources/)
+| 来源 | 类型 | 关键主题 |
+|------|------|----------|
+| [[sources/胡塞尔逻辑研究]] | book | 现象学 |
+
+## 待探索
+- 未归档的问题列表</code></pre>
+<hr>
+<h3>log.md 格式</h3>
+<pre><code># 操作日志
+
+## [YYYY-MM-DD] ingest | 来源标题
+- 读取了...
+- 创建了 [[sources/页面]]
+- 更新了 [[concepts/页面]]
+- 笔记：...
+
+## [YYYY-MM-DD] query | 用户问题
+- 查询了 index 和相关页面
+- 回答了关于...
+- 建议：...
+
+## [YYYY-MM-DD] lint | 健康检查
+- 发现：...
+- 更新：...
+- 待办：...</code></pre>
+<hr>
+<h3>YAML Frontmatter 字段说明</h3>
+<pre>| 字段 | 必需 | 说明 |</pre>
+<pre>|------|------|------|</pre>
+<pre>| <code>uid</code> | ✓ | 唯一标识符（小写+连字符） |</pre>
+<pre>| <code>title</code> | ✓ | 显示标题 |</pre>
+<pre>| <code>created</code> | ✓ | 创建日期 YYYY-MM-DD |</pre>
+<pre>| <code>updated</code> | ✓ | 最后更新日期 |</pre>
+<pre>| <code>tags</code> | ✓ | 标签数组 |</pre>
+<pre>| <code>type</code> | entities必需 | philosopher/work/movement |</pre>
+<pre>| <code>sources</code> | 推荐 | 相关来源的 uid列表 |</pre>
+<pre>| <code>born/died</code> | 可选 | 哲学家生卒年 |</pre>
+<hr>
+<h3>使用提示</h3>
+<ul>
+<li><strong>Obsidian Web Clipper</strong>：安装浏览器扩展，快速将网页转为 markdown</li>
+<li><strong>下载图片本地化</strong>：设置 → 文件和链接 → 附件文件夹路径</li>
+<li><strong>Graph View</strong>：用 Obsidian 的图谱视图查看 wiki 结构</li>
+<li><strong>Dataview</strong>：用 <code>type:philosopher</code> 等查询生成动态列表</li>
+</ul>
+<hr>
+<p>*本 schema 由 LLM 维护，随着实践演进而更新。*</p>
+</article><footer>Source: E:\weshare\obsidian\Philosophy\Wiki\_schema.md · Published to live11ryh/philosophyquestions</footer></main></body></html>
