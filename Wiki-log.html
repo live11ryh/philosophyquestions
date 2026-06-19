@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>哲学知识库操作日志</title><meta name="description" content="从 Obsidian Philosophy 知识库转换而来的 Wiki、索引或资料页。"><style>:root{--paper:#f6efe3;--ink:#171513;--muted:#62584d;--bronze:#a5743f;--oxblood:#7d2f2a;--blueblack:#1f3642;--line:rgba(23,21,19,.16);--panel:rgba(255,252,246,.72)}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#fbf6ee,var(--paper));font-family:"Noto Serif SC","Songti SC","SimSun",serif;line-height:1.86}.shell{width:min(900px,calc(100% - 36px));margin:auto;padding:56px 0 72px}a{color:var(--oxblood);text-underline-offset:3px}.back{font-family:"Inter","Segoe UI",sans-serif;font-size:.86rem;color:var(--muted);text-decoration:none}header{padding:34px 0 30px;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 14px;font-family:"Inter","Segoe UI",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze);font-weight:800}h1{margin:0;max-width:860px;font-size:clamp(2rem,5vw,4rem);line-height:1.12;letter-spacing:0}.dek{margin:20px 0 0;max-width:740px;color:var(--blueblack);font-size:1.08rem}.meta{margin-top:16px;color:var(--muted);font-family:"Inter","Segoe UI",sans-serif;font-size:.9rem}article{padding-top:30px}h2{margin:42px 0 12px;color:var(--blueblack);font-size:1.56rem;line-height:1.28}h3{margin:28px 0 10px;color:var(--oxblood);font-size:1.22rem}h4,h5{margin:24px 0 8px;color:var(--blueblack);font-size:1.08rem}p,li{font-size:1.04rem}code{font-family:"Cascadia Mono","Consolas",monospace;font-size:.94em;background:rgba(31,54,66,.08);padding:1px 4px;border-radius:4px}blockquote{margin:24px 0;padding:16px 20px;border-left:4px solid var(--bronze);background:var(--panel);color:var(--blueblack)}pre{white-space:pre-wrap;margin:12px 0;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--muted);overflow:auto}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-family:"Inter","Segoe UI",sans-serif;font-size:.9rem}</style></head><body><main class="shell"><a class="back" href="index.html">← 返回哲学文档目录</a><header><p class="eyebrow">Philosophy Wiki / Notes</p><h1>哲学知识库操作日志</h1><p class="dek">从 Obsidian Philosophy 知识库转换而来的 Wiki、索引或资料页。</p><p class="meta">整理自 Obsidian：Philosophy\Wiki\log.md</p></header><article>
+<h2>操作日志</h2>
+<blockquote>这是 Philosophy Wiki 的操作记录。按时间倒序排列。</blockquote>
+<blockquote>格式：<code>## [YYYY-MM-DD] type | description</code></blockquote>
+<hr>
+<h3>[2026-06-09] ingest | 萨特《存在与虚无》源资料摘要</h3>
+<ul>
+<li>创建了 <span>sources/sartre-being-and-nothingness</span> - 源资料摘要</li>
+<li>整合内容：</li>
+<li>自在存在 vs 为自存在</li>
+<li>虚无化：意识的存在方式是否定</li>
+<li>自由的本体论论证</li>
+<li>他者问题与&quot;他人即是地狱&quot;</li>
+<li>自欺概念</li>
+<li>更新了 <span>entities/萨特</span> - 添加了源资料链接</li>
+<li>更新了 <span>index</span> - 添加了新源资料</li>
+</ul>
+<hr>
+<h3>[2026-06-09] ingest | 萨特人物页面</h3>
+<ul>
+<li>创建了 <span>entities/萨特</span> - 人物页面</li>
+<li>生平、著作</li>
+<li>核心思想：存在先于本质、虚无化、自在为自、绝对自由、他人凝视</li>
+<li>与胡塞尔的对比</li>
+<li>与海德格尔的关系</li>
+<li>更新了 <span>concepts/意向性</span> - 添加了萨特人物页面链接</li>
+<li>更新了 <span>index</span> - 添加了萨特页面</li>
+</ul>
+<hr>
+<h3>[2026-06-08] init | 初始化知识库</h3>
+<ul>
+<li>创建了 Wiki 目录结构：</li>
+<li><code>concepts/</code> - 概念页面</li>
+<li><code>entities/</code> - 人物/作品页面</li>
+<li><code>sources/</code> - 源资料摘要</li>
+<li><code>raw/</code> - 原始资料</li>
+<li>创建了 <code>_schema.md</code> - 模式定义</li>
+<li>创建了 <code>index.md</code> - 内容索引</li>
+<li>创建了 <code>log.md</code> - 操作日志</li>
+<li>配置了 frontmatter 规范和页面格式</li>
+</ul>
+<hr>
+<h3>[2026-06-08] lint | 建立外部链接</h3>
+<ul>
+<li>执行了 lint 健康检查</li>
+<li>发现 Wiki 页面孤立问题</li>
+<li>在以下外部笔记中添加了 <code>related</code> 字段链接到 Wiki：</li>
+<li><span>../../000_思想地图_MOC</span> → <span>index</span></li>
+<li><span>../../查拉图斯特拉象征意义</span> → <span>entities/尼采</span>, <span>sources/nietzsche-zarathustra-symbolism</span></li>
+<li><span>../../超人-权力意志-永恒轮回</span> → <span>entities/尼采</span></li>
+<li><span>../../Nietzsche_God_is_Dead</span> → <span>entities/尼采</span></li>
+<li><span>../../Will_and_Life_Logic_Spectrum</span> → <span>entities/尼采</span></li>
+<li>更新了 <span>index</span> - 添加了&quot;外部链接&quot;部分</li>
+<li><strong>结果</strong>：Wiki 核心页面现在有 inbound links</li>
+</ul>
+<hr>
+<h3>[2026-06-09] ingest | 胡塞尔 - 现象学核心</h3>
+<ul>
+<li>创建了 <span>entities/胡塞尔</span> - 人物页面（生平、著作、核心思想、发展脉络）</li>
+<li>创建了 <span>concepts/现象学</span> - 概念页面（定义、核心原则、发展脉络、四条线索）</li>
+<li>创建了 <span>sources/husserl-logical-investigations</span> - 源资料摘要（《逻辑研究》）</li>
+</ul>
+<hr>
+<h3>[2026-06-09] ingest | 意向性 - 现象学核心概念</h3>
+<ul>
+<li>创建了 <span>concepts/意向性</span> - 概念页面</li>
+<p>-整合内容：</p>
+<li>定义：意识的基本结构</li>
+<li>核心特征：必然性、超越性、构成性</li>
+<li>视域结构：内视域、外视域、总视域</li>
+<li>内时间意识三重结构：原初印象、滞留、预持</li>
+<li>与休谟的对比</li>
+<li>从胡塞尔到其他现象学家的演变</li>
+<li>更新了 <span>concepts/现象学</span> - 添加了指向意向性页面的链接</li>
+<li>更新了 <span>index</span> - 添加了意向性页面</li>
+<li>在以下外部笔记中添加了 <code>related</code> 字段：</li>
+<li><span>../../现象学发展史</span> → <span>concepts/现象学</span>, <span>entities/胡塞尔</span></li>
+<li><span>../../现象学思想地图_从胡塞尔到当代法国转向</span> → <span>concepts/现象学</span>, <span>entities/胡塞尔</span></li>
+<li><span>../../现象学问题链分析</span> → <span>concepts/现象学</span>, <span>entities/胡塞尔</span></li>
+<li><span>../../胡塞尔与康德</span> → <span>entities/胡塞尔</span>, <span>concepts/现象学</span></li>
+<li><span>../../胡塞尔现象学</span> → <span>entities/胡塞尔</span>, <span>concepts/现象学</span>, <span>sources/husserl-logical-investigations</span></li>
+<li><span>../../胡塞尔_逻辑研究_第一卷与第二卷逻辑联系详解</span> → <span>entities/胡塞尔</span>, <span>sources/husserl-logical-investigations</span></li>
+<li><span>../../胡塞尔_逻辑研究_第四与第六研究深度解析</span> → <span>entities/胡塞尔</span>, <span>sources/husserl-logical-investigations</span></li>
+<li><span>../../Phenomenology_Logical_Progression</span> → <span>concepts/现象学</span>, <span>entities/胡塞尔</span></li>
+<li>更新了 <span>index</span> - 添加了胡塞尔相关内容</li>
+</ul>
+<hr>
+<h3>[2026-06-09] ingest | 继续完善 - 海德格尔、本质直观、梅洛庞蒂</h3>
+<ul>
+<li>创建了 <span>entities/海德格尔</span> - 人物页面</li>
+<li>生平、著作</li>
+<li>核心思想：此在、在世存在、操劳、向死存在</li>
+<li>对胡塞尔的批判与超越</li>
+<li>创建了 <span>concepts/本质直观</span> - 概念页面</li>
+<li>本质变更法</li>
+<li>与柏拉图理念论的区别</li>
+<li>对康定的超越</li>
+<li>创建了 <span>entities/梅洛庞蒂</span> - 人物页面</li>
+<li>生平、著作</li>
+<li>核心思想：身体主体、具身性、知觉首要性、肉身</li>
+<li>对胡塞尔的继承与批判</li>
+<li>更新了现有页面：</li>
+<li><span>concepts/意向性</span> - 添加了与海德格尔、梅洛庞蒂的链接</li>
+<li><span>index</span> - 添加了新页面</li>
+<li>更新了外部笔记：</li>
+<li><span>../../Phenomenology_Logical_Progression</span> - 添加了海德格尔、梅洛庞蒂链接</li>
+<li><span>../../梅洛庞蒂</span> - 添加了 Wiki 链接</li>
+</ul>
+<hr>
+<h3>[2026-06-08] ingest | 尼采 - 查拉图斯特拉象征意义</h3>
+<ul>
+<li>读取了源文件：</li>
+<li><span>../../《Zarathustra》中的各种象征.md</span></li>
+<li><span>../../尼采_道德谱系_现代社交媒体解毒剂.md</span></li>
+<li>创建了 <span>entities/尼采</span> - 人物页面（包含完整生平、著作、思想、象征系统）</li>
+<li>创建了 <span>sources/nietzsche-zarathustra-symbolism</span> - 象征意义分析摘要</li>
+<li>创建了 <span>sources/nietzsche-genealogy-of-morals</span> - 道德谱系与现代社交媒体摘要</li>
+<li>更新了 <span>index</span> - 添加了 3 个新页面条目</li>
+<li>整合内容：</li>
+<li>精神三变框架</li>
+<li>走钢丝者四维深渊</li>
+<li>正向/反向象征矩阵</li>
+<li>现代社会应用（社交媒体批判）</li>
+</ul>
+<hr>
+<p>##未来日志条目格式</p>
+<pre><code>## [YYYY-MM-DD] ingest | 来源标题
+- 读取了 [文件/URL]
+- 创建了 [[sources/页面]]摘要
+- 更新了 [[concepts/页面]]
+- 更新了 [[entities/页面]]
+- 标注矛盾：[[矛盾页面 A]] vs [[页面 B]]
+- 笔记：...
+
+## [YYYY-MM-DD] query | 用户问题
+- 查询了 index →定位到 [[相关页面]]
+- 综合了 [[页面1]] 和 [[页面2]]
+- 回答：...
+- 归档为：[[新分析页面]]
+
+## [YYYY-MM-DD] lint | 健康检查
+- 检查矛盾：发现 X 与 Y 冲突
+- 检查孤立：Z页面无 inbound 链接
+- 更新：陈旧 claims 已标记
+- 建议：需要找关于...的资料
+
+## [YYYY-MM-DD] link | 建立外部链接
+- 在外部笔记中添加 `related` 字段
+- 更新 index.md 添加外部链接部分
+- 建立 Wiki 与外部笔记的桥接</code></pre>
+<hr>
+<p>*本日志由 LLM 维护，用于追踪 wiki 演化历史。*</p>
+</article><footer>Source: E:\weshare\obsidian\Philosophy\Wiki\log.md · Published to live11ryh/philosophyquestions</footer></main></body></html>
